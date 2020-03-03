@@ -1,9 +1,9 @@
-# Penta Security's MPC Demo SDK
+# Penta Security's MPC SDK
 Penta Security의 MPC 데모 프로그램 제작을 위한 SDK를 제공합니다.
 
-# Intro
+# 시작하며
 
-## MPC 기술 소개
+## MPC 란?
 
 ## Penta MPC SDK 목적
 
