@@ -55,8 +55,8 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 # Use SDK
 - MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
 - Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
-- Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. 
-
+- Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. <br>
+  Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
 ex)
 <pre> 
  $ ls /opt/pentampc
@@ -66,7 +66,8 @@ ex)
  libPenta_MPC-0.2.0.0211.e8c9.android.x86.tar.gz          libPenta_MPC-0.2.0.0211.e8c9.Darwin.tar.gz
  libPenta_MPC-0.2.0.0211.e8c9.android.x86_64.tar.gz       libPenta_MPC-0.2.0.0211.e8c9.android.arm64-v8a.tar.gz    
  libPenta_MPC-0.2.0.0211.e8c9.ios.tar.gz                  libPenta_MPC-0.2.0.0211.e8c9.android.armeabi-v7a.tar.gz  
- libPenta_MPC-0.2.0.0211.e8c9.linux.x64.tar.gz
+ libPenta_MPC-0.2.0.0211.e8c9.linux.x64.tar.gz            libPenta_MPC-0.2.0.0211.e8c9.linux.x64.so
+ libPenta_MPC.so
  $ java -cp /opt/pentampc/mpc-sdk-1.0-SNAPSHOT.jar:/opt/pentampc/pcw-common-1.6.2-SNAPSHOT.jar:. -Djava.library.path=/opt/pentampc/native com.mpcdemo
 </pre>
 
