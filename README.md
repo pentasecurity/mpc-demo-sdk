@@ -53,8 +53,25 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 ```
 
 # Use SDK
+- MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
+- Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
+- Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. 
+
+ex)
+<pre> 
+ $ ls /opt/pentampc
+ native                              mpc-sdk-1.0-SNAPSHOT.jar          
+ mpc-sdk-1.0-SNAPSHOT-javadoc.jar    pcw-common-1.6.2-SNAPSHOT.jar
+ $ ls /opt/pentampc/native
+ libPenta_MPC-0.2.0.0211.e8c9.android.x86.tar.gz          libPenta_MPC-0.2.0.0211.e8c9.Darwin.tar.gz
+ libPenta_MPC-0.2.0.0211.e8c9.android.x86_64.tar.gz       libPenta_MPC-0.2.0.0211.e8c9.android.arm64-v8a.tar.gz    
+ libPenta_MPC-0.2.0.0211.e8c9.ios.tar.gz                  libPenta_MPC-0.2.0.0211.e8c9.android.armeabi-v7a.tar.gz  
+ libPenta_MPC-0.2.0.0211.e8c9.linux.x64.tar.gz
+ $ java -cp /opt/pentampc/mpc-sdk-1.0-SNAPSHOT.jar:/opt/pentampc/pcw-common-1.6.2-SNAPSHOT.jar:. -Djava.library.path=/opt/pentampc/native com.mpcdemo
+</pre>
 
 ## 디렉토리 구조
+
 
 ## SDK 사용 방법
 
