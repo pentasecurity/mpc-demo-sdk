@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+}
+
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+    maven { url "https://repo.spring.io/plugins-release" }
+    maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+}
+dependencies {
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    compile "com.squareup.okhttp3:logging-interceptor:3.8.1"
+
+    compile files("${project.rootDir}/MPCSdk/mpc-sdk-1.0-SNAPSHOT.jar")
+    compile files("${project.rootDir}/MPCSdk/pcw-common-1.6.2-SNAPSHOT.jar")
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+
+task copyRelease  {
+    dependsOn build
+
+    doLast {
+        println "doLast"
+        copy {
+            from configurations.runtime
+            into("$buildDir/release/lib")
+        }
+        copy {
+            from 'bin/MPCDemo.bat', 'bin/MPCDemo.sh'
+            into("$buildDir/release")
+        }
+        copy {
+            from 'build/libs/'.concat(archivesBaseName).concat('-').concat(version).concat('.jar')
+            into("$buildDir/release")
+        }
+        copy {
+            from "${project.rootDir}/MPCSdk/native"
+            into "$buildDir/release/lib/native"
+
+        }
+    }
+}
