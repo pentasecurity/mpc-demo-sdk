@@ -100,8 +100,34 @@ ex)
 
 # Contact
 
-## 이슈 제보
+## 이슈 제보 또는 사용에 대한 문의
 
-## 사용에 대한 문의
+Penta MPC SDK를 통한 테스트 도중 비정상적인 동작이 확인되거나 문의사항이 발생하는 경우,
+<br>
+아래의 주소로 연락을 부탁드립니다.
+
+* E-Mail
+```
+bni.bd@pentasecurity.com
+```
+* Phone Number
+```
++82-2-2125-xxxx
++82-10-xxxx-xxxx
+```
 
 ## Commercial Contact
+
+Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
+<br>
+아래의 주소로 연락을 부탁드립니다.
+
+* E-Mail
+```
+bni.bd@pentasecurity.com
+```
+* Phone Number
+```
++82-2-2125-xxxx
++82-10-xxxx-xxxx
+```
