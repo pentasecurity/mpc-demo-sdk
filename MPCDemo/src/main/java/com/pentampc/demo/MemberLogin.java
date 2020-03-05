@@ -19,7 +19,7 @@ public class MemberLogin {
                 }
             }
             if (null == password || password.trim().length() < 1) {
-                password = MPCConsoleUtils.InputString("Password", "");
+                password = MPCConsoleUtils.InputPassword("Password");
                 if (null == password) {
                     System.exit(0);
                 }
