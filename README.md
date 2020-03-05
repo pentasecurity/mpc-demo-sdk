@@ -37,12 +37,10 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 ## 구동 조건
 
 * Windows
-
 * Unix / Linux
-
 * Android
-
 * iOS
+** JDK 1.8 이상.
 
 ## 데모 제약 사항
 
@@ -91,11 +89,60 @@ ex)
 </pre>
 
 ## 디렉토리 구조
-
-## SDK 사용 방법
+```
+┬ MPCDemo : MPC Demo 
+│   ├ bin : Start Script
+│   ├ src : Demo source
+│   └ build.gradle : gradle script
+└ MPCSdk : PentaMPC SDK
+    ├ native : PentaMPC native modules
+    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar : PentaMPC javadoc
+    ├ mpc-sdk-1.0-SNAPSHOT.jar : PentaMPC Java Archive
+    └ pcw-common-1.6.2-SNAPSHOT.jar : PentaMPC Common Java Archive
+```
 
 ## 프로그램 테스트 방법
-
+- Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
+- Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에 프로그램의 재시작 시 키가 보존 되지 않습니다.
+  실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
+  
+- 다운로드
+```
+/home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
+Cloning into 'mpc-demo-sdk'...
+remote: Enumerating objects: 83, done.
+remote: Counting objects: 100% (83/83), done.
+remote: Compressing objects: 100% (67/67), done.
+remote: Total 83 (delta 16), reused 49 (delta 1), pack-reused 0
+Unpacking objects: 100% (83/83), done.
+/home/mpc> ls
+mpc-demo-sdk
+/home/mpc> cd mpc-demo-sdk
+/home/mpc/mpc-demo-sdk> ls
+LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
+/home/mpc/mpc-demo-sdk> cd MPCDemo
+```
+- 빌드 및 테스트
+```
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle build
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 up-to-date
+/home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
+/home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
+MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh
+Member ID : member1
+Password : 
+  1. Creation of MPC Group
+  2. Signing
+  3. Member List
+  4. Update AccessToken
+  5. My MPC Group
+  9. Exit
+Select Menu.  (1,2,3,4,5,9) : 
+```
 ## 제공되는 인터페이스
 
 # Contact
