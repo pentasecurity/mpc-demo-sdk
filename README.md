@@ -32,7 +32,7 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 "MPC 서명"은 "MPC 그룹" 내 과반 수 이상의 "멤버"들의 동의로 진행됩니다.
 ```
 
-# Requirement
+# 요구 사항
 
 ## 구동 조건
 
@@ -44,15 +44,34 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 * iOS
 
-## 제약 사항
+## 데모 제약 사항
 
-* "MPC 그룹" 내 "멤버"수는 최소 2명, 최대 10명까지 지원됩니다.
-* Threshold 값의 범위는 아래와 같습니다.
+펜타시큐리티에서 제공하는 MPC SDK는 MPC 기술의 데모 테스트를 목적으로 하며,
+<br>
+다음과 같은 제한에 따라 2-of-3 테스트 환경을 제공합니다.
+* "MPC 그룹" 내 "멤버" 수는 3명으로 제한합니다.
+* "MPC 그룹" 의 "Threshold" 값은 2로 제한합니다.
+
+## 정식 버전의 SDK 사용
+
+데모 버전의 제약 사항 외 조건에서 테스트를 진행하길 원하거나,
+<br>
+Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
+<br>
+아래의 주소로 연락을 부탁드립니다.
+
+* E-Mail
 ```
-2 ≤ Threshold ≤ "MPC 그룹" 내 "멤버" 수 ≤ 10
+bni.bd@pentasecurity.com
+```
+* Phone Number
+```
++82-2-2125-xxxx
++82-10-xxxx-xxxx
 ```
 
 # Use SDK
+
 - MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
 - Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
 - Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. <br>
@@ -73,23 +92,42 @@ ex)
 
 ## 디렉토리 구조
 
-
 ## SDK 사용 방법
 
 ## 프로그램 테스트 방법
 
 ## 제공되는 인터페이스
 
-# Permission
-
-## Penta MPC SDK 데모 제공 범위
-
-## 데모 외 정식 사용을 위한 
-
 # Contact
 
-## 이슈 제보
+## 이슈 제보 또는 사용에 대한 문의
 
-## 사용에 대한 문의
+Penta MPC SDK를 통한 테스트 도중 비정상적인 동작이 확인되거나 문의사항이 발생하는 경우,
+<br>
+아래의 주소로 연락을 부탁드립니다.
+
+* E-Mail
+```
+bni.bd@pentasecurity.com
+```
+* Phone Number
+```
++82-2-2125-xxxx
++82-10-xxxx-xxxx
+```
 
 ## Commercial Contact
+
+Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
+<br>
+아래의 주소로 연락을 부탁드립니다.
+
+* E-Mail
+```
+bni.bd@pentasecurity.com
+```
+* Phone Number
+```
++82-2-2125-xxxx
++82-10-xxxx-xxxx
+```
