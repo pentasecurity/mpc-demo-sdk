@@ -32,7 +32,6 @@ task copyRelease  {
     dependsOn build
 
     doLast {
-        println "doLast"
         copy {
             from configurations.runtime
             into("$buildDir/release/lib")

@@ -17,15 +17,13 @@ import java.util.List;
 import java.util.Map;
 
 public class MPCDemo {
-    protected static String serverUrl = "http://localhost:8080";
-    //private static String serverUrl = "http://10.0.121.41:8080";
+    //protected static String serverUrl = "http://localhost:8080";
+    protected static String serverUrl = "http://10.0.121.41:8080";
     private static String memberid = null;
     private static String password = null;
 
     public static MPCApiClient apiService = null;
     private static Map<String, MPCKey> mpcKeys = new HashMap<String, MPCKey>();
-
-    private static java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
 
     private boolean runDemo = true;
 
@@ -33,7 +31,6 @@ public class MPCDemo {
         Command command = new Command(args);
 
         apiService = getApiService(command.getServer());
-        System.out.println(">>>333");
 
         if (command.isHelp()) {
             command.CommandHelpPrint();
@@ -49,9 +46,6 @@ public class MPCDemo {
     private static MPCApiClient getApiService(String serverUrl) throws InvalidAddressException {
         NetworkService networkService = new NetworkService();
         networkService.baseUrl(serverUrl);
-        if (null != proxy) {
-            networkService.proxy(proxy);
-        }
         return networkService.getApiClient();
     }
 
