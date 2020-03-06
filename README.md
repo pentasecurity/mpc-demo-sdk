@@ -1,4 +1,6 @@
 # Penta MPC SDK
+![version](https://img.shields.io/badge/version-1.0.0-blue)
+<br>
 펜타시큐리티의 MPC 데모 프로그램 제작을 위한 SDK를 제공합니다.
 
 # 시작하며
