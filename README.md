@@ -36,11 +36,14 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 ## 구동 조건
 
+지원 OS
 * Windows
 * Unix / Linux
 * Android
 * iOS
-** JDK 1.8 이상.
+
+구동 환경
+* JDK 1.8 
 
 ## 데모 제약 사항
 
@@ -64,8 +67,8 @@ bni.bd@pentasecurity.com
 ```
 * Phone Number
 ```
-+82-2-2125-xxxx
-+82-10-xxxx-xxxx
+02-2125-xxxx
+010-xxxx-xxxx
 ```
 
 # Use SDK
@@ -145,7 +148,7 @@ Select Menu.  (1,2,3,4,5,9) :
 ```
 ## 제공되는 인터페이스
 
-# Contact
+# 연락처
 
 ## 이슈 제보 또는 사용에 대한 문의
 
@@ -159,11 +162,11 @@ bni.bd@pentasecurity.com
 ```
 * Phone Number
 ```
-+82-2-2125-xxxx
-+82-10-xxxx-xxxx
+02-2125-xxxx
+010-xxxx-xxxx
 ```
 
-## Commercial Contact
+## 상업적인 문의
 
 Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
 <br>
@@ -175,6 +178,6 @@ bni.bd@pentasecurity.com
 ```
 * Phone Number
 ```
-+82-2-2125-xxxx
-+82-10-xxxx-xxxx
+02-2125-xxxx
+010-xxxx-xxxx
 ```
