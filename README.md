@@ -51,11 +51,23 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 펜타시큐리티에서 제공하는 MPC SDK는 MPC 기술의 데모 테스트를 목적으로 하며,
 <br>
-다음과 같은 제한에 따라 2-of-3 테스트 환경을 제공합니다.
-* "MPC 그룹" 내 "멤버" 수는 3명으로 제한합니다.
-* "MPC 그룹" 의 "Threshold" 값은 2로 제한합니다.
+다음과 같은 제한에 따라 테스트 환경을 제공합니다.
+* "MPC 그룹" 내 "멤버" 수는 2명 이상, 10명 이하로 제한합니다.
+<br>
+"멤버" 수는 테스트 신청 과정에서 입력합니다.
+<br>
+```
+2 ≤ "멤버" 수 ≤ 10
+```
+* "MPC 그룹" 의 "Threshold" 값은 다음과 같이 2 이상, 10 이하, "멤버" 수 이하로 제한합니다.
+<br>
+```
+2 ≤ Threshold ≤ "멤버" 수 ≤ 10
+```
 
-## 정식 버전의 SDK 사용
+
+
+## 상업용 버전의 SDK 사용
 
 데모 버전의 제약 사항 외 조건에서 테스트를 진행하길 원하거나,
 <br>
@@ -65,15 +77,10 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
-```
-* Phone Number
-```
-02-2125-xxxx
-010-xxxx-xxxx
+mpc@pentasecurity.com
 ```
 
-# Use SDK
+# SDK 사용
 
 - MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
 - Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
@@ -164,12 +171,7 @@ Penta MPC SDK를 통한 테스트 도중 비정상적인 동작이 확인되거�
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
-```
-* Phone Number
-```
-02-2125-xxxx
-010-xxxx-xxxx
+mpc@pentasecurity.com
 ```
 
 ## 상업적인 문의
@@ -180,10 +182,5 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
-```
-* Phone Number
-```
-02-2125-xxxx
-010-xxxx-xxxx
+mpc@pentasecurity.com
 ```
