@@ -1,3 +1,6 @@
+   
+- - -
+   
 # Penta MPC SDK
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
 <br>
@@ -7,7 +10,9 @@
 한글 문서는 다음 링크를 통해 확인해주세요.
 <br>
 한글 문서 : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>
-
+   
+- - -
+   
 # 목차
 1. [시작하며](#시작하며)
 
@@ -37,6 +42,10 @@
 
 * [상업적인 문의](#상업적인-문의)
 
+5. [주의사항](#주의사항)
+   
+- - -
+   
 # 시작하며
 
 ## MPC란
@@ -55,7 +64,7 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 ## Penta MPC SDK 목적
 
-펜타시큐리티의 MPC SDK는 다음의 두가지 MPC 관련 기능을 사용하는 데모 프로그램을 제작, 테스트 하기위해 제공되었습니다.
+펜타시큐리티의 MPC SDK는 다음의 두가지 MPC 관련 기능을 사용하는 비상업적 데모 프로그램을 제작, 테스트 하기위해 제공되었습니다.
 
 * Create MPC Group
 ```
@@ -67,7 +76,9 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 "MPC 서명"을 진행합니다.
 "MPC 서명"은 "MPC 그룹" 내 과반 수 이상의 "멤버"들의 동의로 진행됩니다.
 ```
-
+   
+- - -
+   
 # 요구 사항
 
 ## 구동 조건
@@ -118,7 +129,9 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 ```
 mpc@pentasecurity.com
 ```
-
+   
+- - -
+   
 # SDK 사용
 
 - MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
@@ -199,7 +212,9 @@ Select Menu.  (1,2,3,4,5,9) :
 인터페이스는 다음 링크를 참고한다
 <br>
 인터페이스 문서 : <https://pentasecurity.github.io/mpc-demo-sdk/>
-
+   
+- - -
+   
 # 연락처
 
 ## 이슈 제보 또는 사용에 대한 문의
@@ -223,3 +238,19 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 ```
 mpc@pentasecurity.com
 ```
+   
+- - -
+   
+# 주의사항
+다음의 주의사항을 꼭 숙지해 주시기 바랍니다.
+* 깃헙을 통해 제공되는 Penta MPC SDK는 비상업적 데모 프로그램의 테스트를 위한 것입니다.
+* 데모 프로그램의 테스트는 정상적인 신청 작성을 접수해야 진행할 수 있습니다.
+* MPC 사용 데이터는 주기적으로 초기화 되며, 원격 서버의 업데이트/수정에 따라 비정기적으로 초기화 될 수 있습니다.
+* Penta MPC SDK의 상업적인 사용 또는 제약 없는 사용을 위해서는 아래의 주소로 연락을 부탁드립니다.
+```
+mpc@pentasecurity.com
+```
+   
+- - -
+   
+   
