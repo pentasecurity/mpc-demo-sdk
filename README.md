@@ -9,15 +9,37 @@
 한글 문서 : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>
 
 # 목차
-1. [시작하며](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0)
-1-1. [MPC란?](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#mpc%EB%9E%80)
-2. [요구 사항](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD)
-3. [SDK 사용](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#sdk-%EC%82%AC%EC%9A%A9)
-4. [연락처](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%97%B0%EB%9D%BD%EC%B2%98)
+1. [시작하며](#시작하며)
+
+* [MPC란](#mpc란)
+
+* [Penta MPC SDK 목적](#penta-mpc-sdk-목적)
+
+2. [요구 사항](#요구-사항)
+
+* [구동 조건](#구동-조건)
+
+* [데모 제약 사항](#데모-제약-사항)
+
+* [상업용 버전의 SDK 사용](#상업용-버전의-sdk-사용)
+
+3. [SDK 사용](#sdk-사용)
+
+* [디렉토리 구조](#디렉토리-구조)
+
+* [프로그램 테스트 방법](#프로그램-테스트-방법)
+
+* [제공되는 인터페이스](#제공되는-인터페이스)
+
+4. [연락처](#연락처)
+
+* [이슈 제보 또는 사용에 대한 문의](#이슈-제보-또는-사용에-대한-문의)
+
+* [상업적인 문의](#상업적인-문의)
 
 # 시작하며
 
-## MPC란?
+## MPC란
 
 Secure Multi Party Computation의 약자로, 다수의 사용자가 각자의 비밀 값을 통해 함께 연산을 진행하는 기술입니다.
 <br><br>
