@@ -10,13 +10,14 @@
 
 # 목차
 1. [시작하며](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0)
+1-1. [MPC란?](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#mpc%EB%9E%80)
 2. [요구 사항](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD)
 3. [SDK 사용](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#sdk-%EC%82%AC%EC%9A%A9)
 4. [연락처](https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md#%EC%97%B0%EB%9D%BD%EC%B2%98)
 
 # 시작하며
 
-## MPC 란?
+## MPC란?
 
 Secure Multi Party Computation의 약자로, 다수의 사용자가 각자의 비밀 값을 통해 함께 연산을 진행하는 기술입니다.
 <br><br>
