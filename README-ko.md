@@ -1,11 +1,54 @@
+   
+- - -
+   
 # Penta MPC SDK
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
 <br>
 펜타시큐리티의 MPC 데모 프로그램 제작을 위한 SDK를 제공합니다.
+<br>
+<br>
+영문 문서는 다음 링크를 통해 확인해주세요.
+<br>
+영문 문서 : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md>
+   
+- - -
+   
+# 목차
+1. [시작하며](#시작하며)
 
+* [MPC란](#mpc란)
+
+* [Penta MPC SDK 목적](#penta-mpc-sdk-목적)
+
+2. [요구 사항](#요구-사항)
+
+* [구동 조건](#구동-조건)
+
+* [데모 제약 사항](#데모-제약-사항)
+
+* [상업용 버전의 SDK 사용](#상업용-버전의-sdk-사용)
+
+3. [SDK 사용](#sdk-사용)
+
+* [디렉토리 구조](#디렉토리-구조)
+
+* [프로그램 테스트 방법](#프로그램-테스트-방법)
+
+* [제공되는 인터페이스](#제공되는-인터페이스)
+
+4. [연락처](#연락처)
+
+* [이슈 제보 또는 사용에 대한 문의](#이슈-제보-또는-사용에-대한-문의)
+
+* [상업적인 문의](#상업적인-문의)
+
+5. [주의사항](#주의사항)
+   
+- - -
+   
 # 시작하며
 
-## MPC 란?
+## MPC란
 
 Secure Multi Party Computation의 약자로, 다수의 사용자가 각자의 비밀 값을 통해 함께 연산을 진행하는 기술입니다.
 <br><br>
@@ -21,7 +64,7 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 ## Penta MPC SDK 목적
 
-펜타시큐리티의 MPC SDK는 다음의 두가지 MPC 관련 기능을 사용하는 데모 프로그램을 제작, 테스트 하기위해 제공되었습니다.
+펜타시큐리티의 MPC SDK는 다음의 두가지 MPC 관련 기능을 사용하는 비상업적 데모 프로그램을 제작, 테스트 하기위해 제공되었습니다.
 
 * Create MPC Group
 ```
@@ -33,7 +76,9 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 "MPC 서명"을 진행합니다.
 "MPC 서명"은 "MPC 그룹" 내 과반 수 이상의 "멤버"들의 동의로 진행됩니다.
 ```
-
+   
+- - -
+   
 # 요구 사항
 
 ## 구동 조건
@@ -51,11 +96,28 @@ Threshold 기반의 서명 관련 기술을 의미합니다.
 
 펜타시큐리티에서 제공하는 MPC SDK는 MPC 기술의 데모 테스트를 목적으로 하며,
 <br>
-다음과 같은 제한에 따라 2-of-3 테스트 환경을 제공합니다.
-* "MPC 그룹" 내 "멤버" 수는 3명으로 제한합니다.
-* "MPC 그룹" 의 "Threshold" 값은 2로 제한합니다.
+다음과 같은 제한에 따라 N-of-M 구성의 테스트 환경을 제공합니다.
+```
+MPC 기술에서, N-of-M 구성의 의미는 다음과 같습니다.
 
-## 정식 버전의 SDK 사용
+N = Threshold, MPC 연산을 위한 정족수
+M = "MPC 그룹"의 "멤버" 전체 수
+
+따라서, 전체 M 명의 "멤버" 중 N 명의 "멤버"가 MPC 연산에 참여해야 진행이 가능한 구성을 의미합니다.
+```
+
+* "MPC 그룹" 내 "멤버" 수는 2명 이상, 10명 이하로 제한합니다. "멤버" 수는 테스트 신청 과정에서 입력합니다.
+```
+2 ≤ M = "멤버" 수 ≤ 10
+```
+* "MPC 그룹" 의 "Threshold" 값은 다음과 같이 2 이상, 10 이하, "멤버" 수 이하로 제한합니다.
+```
+2 ≤ N = Threshold ≤ M = "멤버" 수 ≤ 10
+```
+* "MPC 그룹" 및 "멤버"의 사용 정보는 한달 단위로 초기화 됩니다.
+
+
+## 상업용 버전의 SDK 사용
 
 데모 버전의 제약 사항 외 조건에서 테스트를 진행하길 원하거나,
 <br>
@@ -65,15 +127,12 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
+mpc@pentasecurity.com
 ```
-* Phone Number
-```
-02-2125-xxxx
-010-xxxx-xxxx
-```
-
-# Use SDK
+   
+- - -
+   
+# SDK 사용
 
 - MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
 - Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
@@ -153,7 +212,9 @@ Select Menu.  (1,2,3,4,5,9) :
 인터페이스는 다음 링크를 참고한다
 <br>
 인터페이스 문서 : <https://pentasecurity.github.io/mpc-demo-sdk/>
-
+   
+- - -
+   
 # 연락처
 
 ## 이슈 제보 또는 사용에 대한 문의
@@ -164,12 +225,7 @@ Penta MPC SDK를 통한 테스트 도중 비정상적인 동작이 확인되거�
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
-```
-* Phone Number
-```
-02-2125-xxxx
-010-xxxx-xxxx
+mpc@pentasecurity.com
 ```
 
 ## 상업적인 문의
@@ -180,10 +236,21 @@ Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으
 
 * E-Mail
 ```
-bni.bd@pentasecurity.com
+mpc@pentasecurity.com
 ```
-* Phone Number
+   
+- - -
+   
+# 주의사항
+다음의 주의사항을 꼭 숙지해 주시기 바랍니다.
+* 깃헙을 통해 제공되는 Penta MPC SDK는 비상업적 데모 프로그램의 테스트를 위한 것입니다.
+* 데모 프로그램의 테스트는 정상적인 신청 작성을 접수해야 진행할 수 있습니다.
+* MPC 사용 데이터는 주기적으로 초기화 되며, 원격 서버의 업데이트/수정에 따라 비정기적으로 초기화 될 수 있습니다.
+* Penta MPC SDK의 상업적인 사용 또는 제약 없는 사용을 위해서는 아래의 주소로 연락을 부탁드립니다.
 ```
-02-2125-xxxx
-010-xxxx-xxxx
+mpc@pentasecurity.com
 ```
+   
+- - -
+   
+   
