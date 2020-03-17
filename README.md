@@ -13,7 +13,8 @@
    
 - - -
    
-# 목차
+# Contents
+
 1. [Getting Started](#getting-started)
 
 * [What is MPC](#what-is-mpc)
