@@ -142,7 +142,7 @@ Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djav
 <br>
 Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
 <br>
-* ex)
+* )
 <pre> 
  $ ls /opt/pentampc
  native                              mpc-sdk-1.0-SNAPSHOT.jar          
