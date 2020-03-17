@@ -132,13 +132,13 @@ mpc@pentasecurity.com
    
 - - -
    
-# SDK 사용
+# Using SDK
 
-- MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
-- Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
-- Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. <br>
-  Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
-ex)
+* The SDK is composed into MPC SDK JAR (Java Archive) and Native Module.
+* JAR file must be added to the CLASSPATH environment variable or java -cp option.
+* Native Module must be added to the library PATH of each OS or java -Djava.library.path. Native module should be used after checking each OS and the corresponding unpacking tar.gz.
+<br>
+e.g.)
 <pre> 
  $ ls /opt/pentampc
  native                              mpc-sdk-1.0-SNAPSHOT.jar          
@@ -152,7 +152,7 @@ ex)
  $ java -cp /opt/pentampc/mpc-sdk-1.0-SNAPSHOT.jar:/opt/pentampc/pcw-common-1.6.2-SNAPSHOT.jar:. -Djava.library.path=/opt/pentampc/native com.mpcdemo
 </pre>
 
-## 디렉토리 구조
+## Structure of Directory
 ```
 ┬ MPCDemo : MPC Demo 
 │   ├ bin : Start Script
@@ -165,12 +165,11 @@ ex)
     └ pcw-common-1.6.2-SNAPSHOT.jar : PentaMPC Common Java Archive
 ```
 
-## 프로그램 테스트 방법
-- Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
-- Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에 프로그램의 재시작 시 키가 보존 되지 않습니다.
-  실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
+## Testing the Program
+* Demo program is configured to test the MPC function by using Penta MPC SDK.
+* The key is not preserved when the program is rebooted. This is because the in the demo program key pairs that are generated for all members are managed only through HashMap. In order to apply it on another application, operation, etc., the key pairs that are generated on the demo program must be kept in a separate storage, like a database.
   
-- 다운로드
+* Download
 ```
 /home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
 Cloning into 'mpc-demo-sdk'...
@@ -186,7 +185,7 @@ mpc-demo-sdk
 LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
 /home/mpc/mpc-demo-sdk> cd MPCDemo
 ```
-- 빌드 및 테스트
+* Build and Test
 ```
 /home/mpc/mpc-demo-sdk/MPCDemo> gradle build
 BUILD SUCCESSFUL in 1s
@@ -207,11 +206,11 @@ Password :
   9. Exit
 Select Menu.  (1,2,3,4,5,9) : 
 ```
-## 제공되는 인터페이스
+## Provided Interface
 
-인터페이스는 다음 링크를 참고한다
+For interface, please refer to the following link.
 <br>
-인터페이스 문서 : <https://pentasecurity.github.io/mpc-demo-sdk/>
+Interface document : <https://pentasecurity.github.io/mpc-demo-sdk/>
    
 - - -
    
