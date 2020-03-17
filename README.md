@@ -36,11 +36,11 @@
 
 * [제공되는 인터페이스](#제공되는-인터페이스)
 
-4. [연락처](#연락처)
+4. [Contact Information](#contact-information)
 
-* [이슈 제보 또는 사용에 대한 문의](#이슈-제보-또는-사용에-대한-문의)
+* [Inquiries for Questions or Concerns](#inquiries-for-questions-or-concerns)
 
-* [상업적인 문의](#상업적인-문의)
+* [Commercial Inquiry](#commercial-inquiry)
 
 5. [Discretions](#Discretions)
    
@@ -215,24 +215,20 @@ Select Menu.  (1,2,3,4,5,9) :
    
 - - -
    
-# 연락처
+# Contact Information
 
-## 이슈 제보 또는 사용에 대한 문의
+## Inquiries for Questions or Concerns
 
-Penta MPC SDK를 통한 테스트 도중 비정상적인 동작이 확인되거나 문의사항이 발생하는 경우,
-<br>
-아래의 주소로 연락을 부탁드립니다.
+If an abnormal behavior is detected during the Penta MPC SDK testing or any questions are brought up, please contact send us an email.
 
 * E-Mail
 ```
 mpc@pentasecurity.com
 ```
 
-## 상업적인 문의
+## Commercial Inquiry
 
-Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
-<br>
-아래의 주소로 연락을 부탁드립니다.
+To review Penta MPC SDK for commercial use of Penta MPC, please send us an email.
 
 * E-Mail
 ```
