@@ -209,7 +209,7 @@ Select Menu.  (1,2,3,4,5,9) :
 ```
 ## 제공되는 인터페이스
 
-인터페이스는 다음 링크를 참고한다
+인터페이스는 다음 링크를 통해 확인할 수 있습니다.
 <br>
 인터페이스 문서 : <https://pentasecurity.github.io/mpc-demo-sdk/>
    
