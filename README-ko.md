@@ -134,11 +134,15 @@ mpc@pentasecurity.com
    
 # SDK 사용
 
-- MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
-- Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
-- Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다. <br>
-  Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
-ex)
+MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
+<br><br>
+Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
+<br><br>
+Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다.
+<br>
+Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
+<br>
+* ex)
 <pre> 
  $ ls /opt/pentampc
  native                              mpc-sdk-1.0-SNAPSHOT.jar          
@@ -153,24 +157,30 @@ ex)
 </pre>
 
 ## 디렉토리 구조
+
 ```
-┬ MPCDemo : MPC Demo 
-│   ├ bin : Start Script
-│   ├ src : Demo source
-│   └ build.gradle : gradle script
-└ MPCSdk : PentaMPC SDK
-    ├ native : PentaMPC native modules
-    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar : PentaMPC javadoc
-    ├ mpc-sdk-1.0-SNAPSHOT.jar : PentaMPC Java Archive
-    └ pcw-common-1.6.2-SNAPSHOT.jar : PentaMPC Common Java Archive
+┬ MPCDemo             : MPC Demo 
+│   ├ bin             : Start Script
+│   ├ src             : Demo source
+│   └ build.gradle    : gradle script
+└ MPCSdk              : PentaMPC SDK
+    ├ native          : PentaMPC native modules
+    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar  : PentaMPC javadoc
+    ├ mpc-sdk-1.0-SNAPSHOT.jar          : PentaMPC Java Archive
+    └ pcw-common-1.6.2-SNAPSHOT.jar     : PentaMPC Common Java Archive
 ```
 
 ## 프로그램 테스트 방법
-- Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
-- Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에 프로그램의 재시작 시 키가 보존 되지 않습니다.
-  실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
-  
-- 다운로드
+
+Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
+<br><br>
+Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에
+<br>
+프로그램의 재시작 시 키가 보존 되지 않습니다.
+<br>
+실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
+<br>
+* 다운로드
 ```
 /home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
 Cloning into 'mpc-demo-sdk'...
@@ -186,7 +196,7 @@ mpc-demo-sdk
 LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
 /home/mpc/mpc-demo-sdk> cd MPCDemo
 ```
-- 빌드 및 테스트
+* 빌드 및 테스트
 ```
 /home/mpc/mpc-demo-sdk/MPCDemo> gradle build
 BUILD SUCCESSFUL in 1s
