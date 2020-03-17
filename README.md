@@ -134,11 +134,13 @@ mpc@pentasecurity.com
    
 # Using SDK
 
-* The SDK is composed into MPC SDK JAR (Java Archive) and Native Module.
-* JAR file must be added to the CLASSPATH environment variable or java -cp option.
-* Native Module must be added to the library PATH of each OS or java -Djava.library.path. Native module should be used after checking each OS and the corresponding unpacking tar.gz.
+The SDK is composed into MPC SDK JAR (Java Archive) and Native Module.
+<br><br>
+JAR file must be added to the CLASSPATH environment variable or java -cp option.
+<br><br>
+Native Module must be added to the library PATH of each OS or java -Djava.library.path. Native module should be used after checking each OS and the corresponding unpacking tar.gz.
 <br>
-e.g.)
+* e.g.)
 <pre> 
  $ ls /opt/pentampc
  native                              mpc-sdk-1.0-SNAPSHOT.jar          
@@ -154,21 +156,22 @@ e.g.)
 
 ## Structure of Directory
 ```
-┬ MPCDemo : MPC Demo 
-│   ├ bin : Start Script
-│   ├ src : Demo source
-│   └ build.gradle : gradle script
-└ MPCSdk : PentaMPC SDK
-    ├ native : PentaMPC native modules
-    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar : PentaMPC javadoc
-    ├ mpc-sdk-1.0-SNAPSHOT.jar : PentaMPC Java Archive
-    └ pcw-common-1.6.2-SNAPSHOT.jar : PentaMPC Common Java Archive
+┬ MPCDemo            : MPC Demo 
+│   ├ bin            : Start Script
+│   ├ src            : Demo source
+│   └ build.gradle   : gradle script
+└ MPCSdk             : PentaMPC SDK
+    ├ native         : PentaMPC native modules
+    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar    : PentaMPC javadoc
+    ├ mpc-sdk-1.0-SNAPSHOT.jar            : PentaMPC Java Archive
+    └ pcw-common-1.6.2-SNAPSHOT.jar       : PentaMPC Common Java Archive
 ```
 
 ## Testing the Program
-* Demo program is configured to test the MPC function by using Penta MPC SDK.
-* The key is not preserved when the program is rebooted. This is because the in the demo program key pairs that are generated for all members are managed only through HashMap. In order to apply it on another application, operation, etc., the key pairs that are generated on the demo program must be kept in a separate storage, like a database.
-  
+Demo program is configured to test the MPC function by using Penta MPC SDK.
+<br><br>
+The key is not preserved when the program is rebooted. This is because the in the demo program key pairs that are generated for all members are managed only through HashMap. In order to apply it on another application, operation, etc., the key pairs that are generated on the demo program must be kept in a separate storage, like a database.
+<br>  
 * Download
 ```
 /home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
