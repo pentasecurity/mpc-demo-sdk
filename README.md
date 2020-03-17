@@ -42,7 +42,7 @@
 
 * [상업적인 문의](#상업적인-문의)
 
-5. [주의사항](#주의사항)
+5. [Discretions](#Discretions)
    
 - - -
    
@@ -241,12 +241,12 @@ mpc@pentasecurity.com
    
 - - -
    
-# 주의사항
-다음의 주의사항을 꼭 숙지해 주시기 바랍니다.
-* 깃헙을 통해 제공되는 Penta MPC SDK는 비상업적 데모 프로그램의 테스트를 위한 것입니다.
-* 데모 프로그램의 테스트는 정상적인 신청 작성을 접수해야 진행할 수 있습니다.
-* MPC 사용 데이터는 주기적으로 초기화 되며, 원격 서버의 업데이트/수정에 따라 비정기적으로 초기화 될 수 있습니다.
-* Penta MPC SDK의 상업적인 사용 또는 제약 없는 사용을 위해서는 아래의 주소로 연락을 부탁드립니다.
+# Discretions
+Please be aware of the following discretions.
+* Penta MPC SDK is provided on Github as a non-commercial test demo program.
+* Testing of the demo program is available only after the full application has been submitted completely.
+* Data input for MPC usage is reset periodically, and may also be reset on a irregular basis according to update/modification of the remote server.
+* For commercial use or unlimited use of Penta MPC SDK, please send us an email.
 ```
 mpc@pentasecurity.com
 ```
