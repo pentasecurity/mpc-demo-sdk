@@ -28,13 +28,13 @@
 
 * [상업용 버전의 SDK 사용](#상업용-버전의-sdk-사용)
 
-3. [SDK 사용](#sdk-사용)
+3. [Using SDK](#using-sdk)
 
-* [디렉토리 구조](#디렉토리-구조)
+* [Structure of Directory](#structure-of-directory)
 
-* [프로그램 테스트 방법](#프로그램-테스트-방법)
+* [Testing the Program](#testing-the-program)
 
-* [제공되는 인터페이스](#제공되는-인터페이스)
+* [Provided Interface](#provided-interface)
 
 4. [Contact Information](#contact-information)
 
