@@ -4,12 +4,12 @@
 # Penta MPC SDK
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
 <br>
-펜타시큐리티의 MPC 데모 프로그램 제작을 위한 SDK를 제공합니다.
+Penta Security provides SDK for Penta MPC Demo Program.
 <br>
 <br>
-한글 문서는 다음 링크를 통해 확인해주세요.
+Please check the following link for a Korean version.
 <br>
-한글 문서 : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>
+Document printed in Korean : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>
    
 - - -
    
