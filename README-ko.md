@@ -177,7 +177,7 @@ Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼
 Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에
 <br>
 프로그램의 재시작 시 키가 보존 되지 않습니다.
-<br>
+<br><br>
 실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
 <br>
 * 다운로드
