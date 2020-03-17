@@ -14,19 +14,19 @@
 - - -
    
 # 목차
-1. [시작하며](#시작하며)
+1. [Getting Started](#getting-started)
 
-* [MPC란](#mpc란)
+* [What is MPC](#what-is-mpc)
 
-* [Penta MPC SDK 목적](#penta-mpc-sdk-목적)
+* [Purpose of Penta MPC SDK](#purpose-of-penta-mpc-sdk)
 
-2. [요구 사항](#요구-사항)
+2. [Requirements](#requirements)
 
-* [구동 조건](#구동-조건)
+* [Conditions for Operations](#conditions-for-operations)
 
-* [데모 제약 사항](#데모-제약-사항)
+* [Restrictions on Demo](#restrictions-on-demo)
 
-* [상업용 버전의 SDK 사용](#상업용-버전의-sdk-사용)
+* [Using the Commercial Version of SDK](#using-the-commercial-version-of-sdk)
 
 3. [Using SDK](#using-sdk)
 
@@ -46,84 +46,76 @@
    
 - - -
    
-# 시작하며
+# Getting Started
 
-## MPC란
+## What is MPC
 
-Secure Multi Party Computation의 약자로, 다수의 사용자가 각자의 비밀 값을 통해 함께 연산을 진행하는 기술입니다.
+Secure MPC is known in other words as ‘multi-party computation’, a cryptography technology that allows multiple parties to compute a common result without exposing any of the sensitive inputs to each other.
 <br><br>
-펜타시큐리티에서 제공하는 MPC 기술은 'Secure Multi Party Computation based Threshold Signature Scheme' 로,
-<br>
-Threshold 기반의 서명 관련 기술을 의미합니다.
+The MPC technology that Penta Security provides is meant to be a threshold-based signature technology, also known as the ‘Threshold Signature Scheme’ that runs on secure multi-party computation protocol.
 <br><br>
-펜타시큐리티의 MPC 기술은 다음과 같은 특징을 가집니다.
+These are the special traits of Penta Security’s MPC technology.
 
-* 사용자 자신의 비밀값이 노출되지 않으면서 다수 사용자의 합의에 따라 연산의 진행 여부를 결정합니다.
-* 한개의 공개키를 생성하기 위해 M개의 비밀키를 필요로 하며,<br>M개의 비밀키 중 N개의 비밀키를 사용하여 전자서명을 생성합니다. (N ≤ M)
-* 키 생성 및 서명 과정에서 완전한 개인키가 존재하지 않습니다.
+* Users rely on minimum quorum of parties to carry out the operation without revealing any of their secret value to one another.
+* To generate one public key, minimum of N number of secret keys are required. Then to make generate one signature, N out of M keys are combined. (N ≤ M)
+* A whole private key does not ever exist in the entire scheme of MPC.
 
-## Penta MPC SDK 목적
+## Purpose of Penta MPC SDK
 
-펜타시큐리티의 MPC SDK는 다음의 두가지 MPC 관련 기능을 사용하는 비상업적 데모 프로그램을 제작, 테스트 하기위해 제공되었습니다.
+Penta Security’s MPC SDK was created to help the testing/developing of non-commercial demo programs for the two following MPC functions.
 
 * Create MPC Group
 ```
-"MPC 그룹"을 생성합니다.
-"MPC 그룹"은 MPC 참여자인 "멤버"가 모여 이루어지는 MPC 기능 사용을 위한 집단입니다.
+“MPC Group” is created.
+“MPC Group” is a pool of MPC participants known as the “members” to gather and operate MPC functionalities.
 ```
 * MPC Signing
 ```
-"MPC 서명"을 진행합니다.
-"MPC 서명"은 "MPC 그룹" 내 과반 수 이상의 "멤버"들의 동의로 진행됩니다.
+“Signing of MPC” is processed.
+“MPC Signing” requires majority consent of the “members” in the “MPC Group”.
 ```
    
 - - -
    
-# 요구 사항
+# Requirements
 
-## 구동 조건
+## Conditions for Operations
 
-지원 OS
+Supported OS
 * Windows
 * Unix / Linux
 * Android
 * iOS
 
-구동 환경
+Operation Environment
 * JDK 1.8 
 
-## 데모 제약 사항
+## Restrictions on Demo
 
-펜타시큐리티에서 제공하는 MPC SDK는 MPC 기술의 데모 테스트를 목적으로 하며,
-<br>
-다음과 같은 제한에 따라 N-of-M 구성의 테스트 환경을 제공합니다.
+MPC SDK provided by Penta Security is intended for testing of MPC demos, and supports limited test environment as follows.
 ```
-MPC 기술에서, N-of-M 구성의 의미는 다음과 같습니다.
+In MPC technology, N-of-M configuration is as follows.
 
-N = Threshold, MPC 연산을 위한 정족수
-M = "MPC 그룹"의 "멤버" 전체 수
+N = Threshold quorum to authorize the operation
+M = The entire number of “members” in the “MPC Group”
 
-따라서, 전체 M 명의 "멤버" 중 N 명의 "멤버"가 MPC 연산에 참여해야 진행이 가능한 구성을 의미합니다.
+Therefore, the input of N-out-of-M quorum is mandatory to authorize MPC operation
 ```
 
-* "MPC 그룹" 내 "멤버" 수는 2명 이상, 10명 이하로 제한합니다. "멤버" 수는 테스트 신청 과정에서 입력합니다.
+* Number of “members” is set to 2 ≤ M ≤ 10. The number of “members” should be inserted during the application process.
 ```
-2 ≤ M = "멤버" 수 ≤ 10
+2 ≤ M = ‘members’ ≤ 10
 ```
-* "MPC 그룹" 의 "Threshold" 값은 다음과 같이 2 이상, 10 이하, "멤버" 수 이하로 제한합니다.
+* Threshold value is set to 2 ≤ Threshold Value ≤ M ≤ 10.
 ```
-2 ≤ N = Threshold ≤ M = "멤버" 수 ≤ 10
+2 ≤ N = Threshold ≤ M = ‘members’ ≤ 10
 ```
-* "MPC 그룹" 및 "멤버"의 사용 정보는 한달 단위로 초기화 됩니다.
+* The value for “MPC Group” and “Members” will be reset on a monthly basis.
 
 
-## 상업용 버전의 SDK 사용
+## Using the Commercial Version of SDK
 
-데모 버전의 제약 사항 외 조건에서 테스트를 진행하길 원하거나,
-<br>
-Penta MPC SDK 사용을 통한 Penta MPC 기술의 정식 도입을 상업적으로 검토하는 경우,
-<br>
-아래의 주소로 연락을 부탁드립니다.
+If you wish to test run without being constraint to any limitations of the demo version, and would further like to review Penta MPC SDK for commercial use, please contact the email below.
 
 * E-Mail
 ```
