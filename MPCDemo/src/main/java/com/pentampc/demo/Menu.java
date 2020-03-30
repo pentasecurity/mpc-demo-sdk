@@ -2,6 +2,15 @@ package com.pentampc.demo;
 
 public class Menu {
 
+    public static int First() {
+        Options options = new Options();
+        options.addOption(new Option(1, "Login"));
+        options.addOption(new Option(2, "Create member"));
+        options.addOption(new Option(9, "Exit"));
+
+        options.printMenu();
+        return options.InputMenu("Select Menu.");
+    }
     public static int MainMenu() {
         Options options = new Options();
         options.addOption(new Option(1, "Creation of MPC Group"));

@@ -123,13 +123,19 @@ public class CreateMPCGroup {
 
         if (isJoin) {
             CreateGroup mpcKeygen = new CreateGroup(MPCDemo.apiService);
+            int step=-100;
             while (false == mpcKeygen.update(MemberLogin.getAccessToken(), sessionId)) {
-                if (0 != mpcKeygen.getCode()) {
-                    System.out.println(String.format("ERROR: %s  [%d]", mpcKeygen.getErrorMessage(), mpcKeygen.getCode()));
-                    break;
+                if (0 != mpcKeygen.getErrorCode()) {
+                    System.out.println(String.format("ERROR: %s  [%d]", mpcKeygen.getErrorMessage(), mpcKeygen.getErrorCode()));
+                    return;
                 }
-
-                MPCConsoleUtils.wait(String.format("Step: %d", mpcKeygen.getStep()));
+                if (step != mpcKeygen.getStep()) {
+                    System.out.println(String.format("Step: %d", mpcKeygen.getStep()));
+                    step = mpcKeygen.getStep();
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {}
             }
 
             if (mpcKeygen.isSuccess()) {

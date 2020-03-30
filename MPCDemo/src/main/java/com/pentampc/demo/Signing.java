@@ -1,8 +1,6 @@
 package com.pentampc.demo;
 
 import com.pentampc.demo.utils.MPCConsoleUtils;
-import com.pentasecurity.cryptowallet.utils.PcwfUtils;
-import com.pentasecurity.cryptowallet.utils.StringUtils;
 import com.pentasecurity.mpc.*;
 import com.pentasecurity.mpc.exceptions.MPCException;
 import com.pentasecurity.mpc.exceptions.SigningInitException;
@@ -11,6 +9,7 @@ import com.pentasecurity.mpc.response.MPCGroupSessionResponse;
 import com.pentasecurity.mpc.response.MPCSuccessResponse;
 import com.pentasecurity.mpc.response.NormalResponse;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 
 public class Signing {
@@ -37,6 +36,7 @@ public class Signing {
             }
         }
     }
+
     public void Request() {
         String message = "";
         String mpcGroupId = "";
@@ -50,7 +50,7 @@ public class Signing {
             sThreshold = MPCConsoleUtils.InputString("Threshold", sThreshold);
             comment = MPCConsoleUtils.InputString("comment", comment, false);
 
-            if (StringUtils.isEmpty(sThreshold) ) {
+            if (null == sThreshold || sThreshold.equals("")) {
                 continue;
             } else {
                 try {
@@ -61,9 +61,11 @@ public class Signing {
             }
             SigningParam signingParam = null;
             try {
-                signingParam = new SigningParam("0x"+ PcwfUtils.encodeHex(message.getBytes()), threshold);
+
+                signingParam = new SigningParam("0x"+ DatatypeConverter.printHexBinary(message.getBytes()), threshold);
                 signingParam.setSessionTimeout(5);
-                if (false == StringUtils.isEmpty(comment)) {
+
+                if (null == comment || comment.equals("")) {
                     signingParam.setComment(comment);
                 }
                 try {
@@ -120,39 +122,49 @@ public class Signing {
                 }
                 return;
             }
+        } else {
+            isJoin = true;
         }
 
-        MPCGroupSessionResponse aa = MPCDemo.apiService.getSessionInfo(MemberLogin.getAccessToken(), sessionId);
-        if (0 == aa.getCode()) {
-            mpcGroupId = aa.getMPCGroupSession().getMpcGroupId();
-            mpcKey = MPCDemo.getMPCKey(mpcGroupId);
-            if (null == mpcKey) {
-                System.out.println("Not found MPC Key");
+        if (isJoin) {
+            MPCGroupSessionResponse aa = MPCDemo.apiService.getSessionInfo(MemberLogin.getAccessToken(), sessionId);
+            if (0 == aa.getCode()) {
+                mpcGroupId = aa.getMPCGroupSession().getMpcGroupId();
+                mpcKey = MPCDemo.getMPCKey(mpcGroupId);
+                if (null == mpcKey) {
+                    System.out.println("Not found MPC Key");
+                    return;
+                }
+            } else {
+                System.out.println(String.format("getSessionInfo ERROR: %s  [%d]", aa.getMsg(), aa.getCode()));
                 return;
             }
-        } else {
-            System.out.println(String.format("getSessionInfo ERROR: %s  [%d]", aa.getMsg(), aa.getCode()));
-            return;
-        }
 
-        MPCSigning mpcSigning = new MPCSigning(mpcKey, MPCDemo.apiService);
-        while (false == mpcSigning.update(MemberLogin.getAccessToken(), sessionId)) {
-            if (0 != mpcSigning.getCode()) {
-                System.out.println(String.format("ERROR: %s  [%d]", mpcSigning.getErrorMessage(), mpcSigning.getCode()));
-                return;
+            MPCSigning mpcSigning = new MPCSigning(mpcKey, MPCDemo.apiService);
+            int step = -100;
+            while (false == mpcSigning.update(MemberLogin.getAccessToken(), sessionId)) {
+                if (0 != mpcSigning.getErrorCode()) {
+                    System.out.println(String.format("ERROR: %s  [%d]", mpcSigning.getErrorMessage(), mpcSigning.getErrorCode()));
+                    return;
+                }
+                if (step != mpcSigning.getStep()) {
+                    System.out.println(String.format("Step: %d", mpcSigning.getStep()));
+                    step = mpcSigning.getStep();
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {}
             }
-            MPCConsoleUtils.wait(String.format("Step: %d", mpcSigning.getStep()));
+
+            if (mpcSigning.isSuccess()) {
+                MPCSign mpcSign = mpcSigning.getMPCSign();
+
+                System.out.println(String.format("Sigr: %s", mpcSign.getSigr()));
+                System.out.println(String.format("Sigs: %s", mpcSign.getSigs()));
+                System.out.println(String.format("Sigrecovery: %s", mpcSign.getSigrecovery()));
+            } else {
+                System.out.println(String.format("ERROR: %s", mpcSigning.getErrorMessage()));
+            }
         }
-
-        if (mpcSigning.isSuccess()) {
-            MPCSign mpcSign = mpcSigning.getMPCSign();
-
-            System.out.println(String.format("Sigr: %s", mpcSign.getSigr()));
-            System.out.println(String.format("Sigs: %s", mpcSign.getSigs()));
-            System.out.println(String.format("Sigrecovery: %s", mpcSign.getSigrecovery()));
-        } else {
-            System.out.println(String.format("ERROR: %s", mpcSigning.getErrorMessage()));
-        }
-
     }
 }

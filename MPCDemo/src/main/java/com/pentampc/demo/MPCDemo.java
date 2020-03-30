@@ -8,8 +8,10 @@ import com.pentasecurity.mpc.model.MPCGroupMember;
 import com.pentasecurity.mpc.model.Member;
 import com.pentasecurity.mpc.network.MPCApiClient;
 import com.pentasecurity.mpc.network.NetworkService;
+import com.pentasecurity.mpc.request.RegisterParam;
 import com.pentasecurity.mpc.response.MPCGroupsResponse;
 import com.pentasecurity.mpc.response.MembersResponse;
+import com.pentasecurity.mpc.response.NormalResponse;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -21,6 +23,7 @@ public class MPCDemo {
     protected static String serverUrl = "http://10.0.121.41:8080";
     private static String memberid = null;
     private static String password = null;
+    protected static Command command = null;
 
     public static MPCApiClient apiService = null;
     private static Map<String, MPCKey> mpcKeys = new HashMap<String, MPCKey>();
@@ -28,14 +31,33 @@ public class MPCDemo {
     private boolean runDemo = true;
 
     public static void main(String[] args) throws InterruptedException, InvalidAddressException {
-        Command command = new Command(args);
+        command = new Command(args);
 
         apiService = getApiService(command.getServer());
 
         if (command.isHelp()) {
             command.CommandHelpPrint();
-        } else {
+        } else if (false == MPCConsoleUtils.isEmpty(command.getMemberId()) || false == MPCConsoleUtils.isEmpty(command.getPassword())) {
             MemberLogin.login(command.getMemberId(), command.getPassword());
+        } else {
+            int idx = 0;
+            while (9 != idx) {
+                idx = Menu.First();
+
+                switch (idx) {
+                    case 1: //login
+                        if (MemberLogin.login(null, null)) {
+                            idx = 9;
+                            break;
+                        }
+                        break;
+                    case 2: // create member
+                        createMember();
+                        break;
+                    case 9:
+                        return;
+                }
+            }
         }
 
         if (MemberLogin.isLogin()) {
@@ -46,6 +68,11 @@ public class MPCDemo {
     private static MPCApiClient getApiService(String serverUrl) throws InvalidAddressException {
         NetworkService networkService = new NetworkService();
         networkService.baseUrl(serverUrl);
+
+        /* When using a proxy. */
+        java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
+        networkService.proxy(proxy);
+
         return networkService.getApiClient();
     }
 
@@ -139,6 +166,43 @@ public class MPCDemo {
                 System.out.println(String.format("MemberID : %s    Index: %d", member.getMemberId(), member.getMemberIdx()));
             }
             System.out.println("================================================================================================");
+        }
+    }
+
+    public static void createMember() {
+        String memberId = "";
+        String memberName = "";
+        String memberPassword = "";
+        String memberPassword2 = "";
+        while (true) {
+            memberId = MPCConsoleUtils.InputString("Please enter ID", memberId);
+            memberName = MPCConsoleUtils.InputString("Please enter Name", memberName);
+            memberPassword = MPCConsoleUtils.InputPassword("Please enter Password");
+            memberPassword2 = MPCConsoleUtils.InputPassword("Please enter your password again");
+
+            if (false == memberPassword.equals(memberPassword2)) {
+                System.out.println("Password is different Please enter it again.");
+                continue;
+            }
+
+            RegisterParam registerParam = new RegisterParam(memberId, memberName, memberPassword);
+
+            /* When using MPC DEMO Service, CustomerID is required. */
+            registerParam.setCustomerId(MPCDemo.command.getCustomerid());
+
+            NormalResponse register = null;
+            try {
+                register = apiService.registerMember(registerParam);
+
+                if (0 != register.getCode()) {
+                    System.out.println(String.format("Member creation failed. [%s]", register.getMsg()));
+                    continue;
+                }
+
+                return;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

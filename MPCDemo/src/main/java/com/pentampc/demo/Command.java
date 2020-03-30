@@ -28,6 +28,8 @@ public class Command {
                 map.put("memberId", cmd[i+1]);
             } else if (cmd[i].equalsIgnoreCase("-p") || cmd[i].equalsIgnoreCase("--password")) {
                 map.put("password", cmd[i+1]);
+            } else if (cmd[i].equalsIgnoreCase("-c") || cmd[i].equalsIgnoreCase("--customerid")) {
+                map.put("customerid", cmd[i+1]);
             }
         }
     }
@@ -35,6 +37,7 @@ public class Command {
     public void CommandHelpPrint() {
         System.out.println("usage: MPCDemo");
         System.out.println("  -h,--help                 Help.");
+        System.out.println("  -c,--customerid <arg>     Customer ID.");
         System.out.println("  -m,--memberid <arg>       MemberId.");
         System.out.println("  -p,--password <arg>       Member password.");
         System.out.println("  -s,--server <arg>         Penta MPC Server URL.(default: http://10.0.121.41:8080)");
@@ -48,6 +51,9 @@ public class Command {
     }
     public String getPassword() {
         return map.get("password");
+    }
+    public String getCustomerid() {
+        return map.get("customerid");
     }
     public boolean isHelp() {
         return isHelp;
