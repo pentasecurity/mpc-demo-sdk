@@ -34,13 +34,13 @@ public class CreateMPCGroup {
         }
     }
     public void Request() {
-        String memberIds = "member1,member2,member3";
-        String sthreshold = "2";
+        String memberIds = "";
+        String sthreshold = "";
         String comment = "";
         String name = "";
 
         while (true) {
-            memberIds = MPCConsoleUtils.InputString("list of MemberIDs. (separator is comma(,)", memberIds);
+            memberIds = MPCConsoleUtils.InputString("list of MemberIDs. (separator is comma(,))", memberIds);
             sthreshold = MPCConsoleUtils.InputString("number of members required for signing", sthreshold);
             name = MPCConsoleUtils.InputString("name", name, false);
             comment = MPCConsoleUtils.InputString("comment", comment, false);
@@ -64,7 +64,7 @@ public class CreateMPCGroup {
                     System.out.println(String.format("MPCKeyGen Failed. [%s]", mpcSuccessResponse.getMsg()));
                     return;
                 }
-                System.out.println("[KeyGen] Session ID: " + mpcSuccessResponse.getSessionId());
+                System.out.println("[createGroup] Session ID: " + mpcSuccessResponse.getSessionId());
                 Join(mpcSuccessResponse.getSessionId());
                 break;
             } catch (Exception e) {

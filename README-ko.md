@@ -173,13 +173,12 @@ Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야
 ## 프로그램 테스트 방법
 
 Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
-<br><br>
+
 Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에
-<br>
 프로그램의 재시작 시 키가 보존 되지 않습니다.
-<br><br>
+
 실 업무에 적용 하기 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 스토리지에 보관하여야 합니다.
-<br>
+
 * 다운로드
 ```
 /home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
@@ -197,26 +196,263 @@ LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat 
 /home/mpc/mpc-demo-sdk> cd MPCDemo
 ```
 * 빌드 및 테스트
-```
-/home/mpc/mpc-demo-sdk/MPCDemo> gradle build
-BUILD SUCCESSFUL in 1s
-2 actionable tasks: 2 up-to-date
-/home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
-/home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
-/home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
-/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
-MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
-/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh
-Member ID : member1
-Password : 
-  1. Creation of MPC Group
-  2. Signing
-  3. Member List
-  4. Update AccessToken
-  5. My MPC Group
-  9. Exit
-Select Menu.  (1,2,3,4,5,9) : 
-```
+    * 빌드
+    ```
+    /home/mpc/mpc-demo-sdk/MPCDemo> gradle build
+    BUILD SUCCESSFUL in 1s
+    2 actionable tasks: 2 up-to-date
+    /home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
+    /home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
+    /home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
+    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
+    MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
+    ```
+    * Demo 실행을 위한 CustomerID 받기
+    
+    http://localhost:18080/join 에 접속 해서 가입을 하면 CustomerID를 메일로 받을 수 있습니다.
+
+    * 실행 및 Member 계정 생성
+    
+    데모프로그램 실행 시 -c 옵션에 메일로 받은 CustomerID를 주어야 합니다. 
+    
+    아래 예제는 CustomerID가 00000000-0000-0000-0000-000000000000이고, member1, member2, member3 의 3개의 Member로 테스트 하는 예제 입니다. 
+    
+    * member 생성
+    ```
+    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) : 2
+    Please enter ID : member1
+    Please enter Name : MEMBER1
+    Please enter Password:
+    Please enter your password again:
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) : 2
+    Please enter ID : member2
+    Please enter Name : MEMBER2
+    Please enter Password:
+    Please enter your password again:
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) : 2
+    Please enter ID : member3
+    Please enter Name : MEMBER3
+    Please enter Password:
+    Please enter your password again:
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) :
+    ```
+    * PentaMPC Server Login
+    ```
+    Please enter your password again:
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) : 1
+    Member ID : member1
+    Password:
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) :
+    ```
+    * 로그인은  -m과 -p로 할 수도 있습니다.
+    ```
+    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -m member1 -p password -c 00000000-0000-0000-0000-000000000000
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) :    
+    ```
+    *  MPC Group 생성 발의
+
+    MPC Group은 2 ~ 10의 Member의 참여로 생성합니다. 아래 예는 3명이 참여하고, 서명시 2명의 참여가 필요한(이 후 <b>Threshold</b>) MPC Group를 생성하는 예입니다.
+    ```
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) : 1
+      1. MPC Group Participation Request
+      2. Join in the creation of MPC Group
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) : 1
+    list of MemberIDs. (separator is comma(,)) : member2,member3
+    number of members required for signing : 2
+    name : MPC Group for testing
+    comment : testing...
+    [createGroup] Session ID: 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+    Step: -1
+    ```
+    참여 member는 발의자인 member1과 member2, member3의 3개의 member가 참여 하고, 서명시 최소 2member가 참여해야하는 MPC Group을 발의 했습니다.
+    발의를 하게되면 Session ID를 받을 수 있습니다. 
+    
+    여기서는 이 session id를 다른 참여자의 MPCDemo 에 수작업으로 전달 하였습니다. 실 적용 시 Push등을 이용하여 App 에게 바로 전달 하도록 구현 할 수 있습니다.  
+
+    * MPC Group 생성에 참여 
+    
+    참여자는 member2와 member3이며 방식은 동일 하기 때문에 본 예제는 member2 만 설명 합니다.
+    ```
+    Please enter your password again:
+      1. Login
+      2. Create member
+      9. Exit
+    Select Menu.  (1,2,9) : 1
+    Member ID : member2
+    Password:
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) : 1
+      1. MPC Group Participation Request
+      2. Join in the creation of MPC Group
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) : 2
+    Please enter Session ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+    ```
+    Session 이 생성되면 지정된 시간([createGroup](https://pentasecurity.github.io/mpc-demo-sdk/com/pentasecurity/mpc/CreateGroup.html)의 파라미터로 지정) 
+    까지 완료되어야 하며 시간이 지나면 Timeout으로 Session은 자동으로 취소 처리 됩니다.(MPCDemo 에서는 5분으로 설정되어 있음)
+    
+    참여자는 MPC Group 생성에 거부 할 수 있으며 거부 시 MPC Group 생성은 취소 됩니다.
+    생성이 완료되면 MPC Group ID, Member의 Group Index, MPC Group Public key, 개인키 쌍 및 Secret 값이 출력 됩니다.
+    
+    MPC Group의 비밀키는 MPC의 특성상 알 수 없고, 서버에도 저장되지 않습니다. 서명 시 각 개인이 받은 정보로 협업을 해서 서명이 이루어 집니다.
+    
+    MPC Group 생성은 발의(Step -1) 부터 완료(Step 3)까지 5단계의 Step을 진행하게 됩니다. 
+    ```
+    Do you join this Session? ([A]PPROVE, [R]EJECT) : a
+    Step: -1
+    Step: 0
+    Step: 1
+    Step: 2
+    Step: 3
+    MPC Group ID: 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+    Member Index: 1
+    Group PubKey: 0x02d58fb448606b5a53f6498999f9cbc3363c432551a68529a1168fe3b9a79e7728
+    Member PriKey: 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
+    Member PubKey: 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20ad2d408043f
+    Member Secret: 0x4ef8b2664bf8406867c42a6ac19e422480e62579af1e74956da3cad5d5770bed
+      1. MPC Group Participation Request
+      2. Join in the creation of MPC Group
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) : 8
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) : 5
+    ================================================================================================
+    MPC Group ID         : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+    MPC Group Name       : dd
+    Owner                : member1
+    Threshold            : 2
+    Group Size           : 0
+    MPC Group PubKey     : 0x02d58fb448606b5a53f6498999f9cbc3363c432551a68529a1168fe3b9a79e7728
+    My PubKey            : 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20ad2d408043f
+    My PriKey            : 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
+    My Secret            : 0x4ef8b2664bf8406867c42a6ac19e422480e62579af1e74956da3cad5d5770bed
+    MemberID : member1    Index: 0
+    MemberID : member2    Index: 0
+    MemberID : member3    Index: 1
+    ================================================================================================
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) :
+    ```
+    * 서명 발의
+    
+    MPC Group이 생성되었으면 이제 서명을 진행 할 수 있습니다.
+    서명을 위한 참여는 최소한 MPC Group 생성 시 지정한 Threshold 만큼의 Member 참여가 필요 합니다. 
+    
+    따라서 위 예저에서 member1, member2, member3로 Member 크기는 3이고, Threshold가 2이므로 서명시 Threshold는 2~3을 지정 할 수 있습니다.
+    
+    Threshold에 2를 주면 member 하나가 거부를 하더라도 서명이 가능합니다. 모든 참여자의 참여를 원한다면 Threshold를 3으로 해서 모든 Member가 참여 해야만 서명이 되도록 할 수 있습니다.  
+    ```
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) : 2
+      1. Signing Participation Request
+      2. Join in the Signing
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) : 1
+    Message : Message to sign.
+    MPC Group ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+    Threshold : [2]
+    comment : comment..
+    [Signing] Session ID: a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+    Step: -1
+    ```
+    member3는 받은 Session ID를 이용하여 Session에 참여를 합니다.
+
+    참여자는 Group의 Member 중 아무나 참여가 가능하고, MPC Group 생성과 같이 거부할 수 있습니다.
+    하지만 MPC Group 생성과 다르게 한 Member가 거부하더라도 참여 승인을 하는 Member 수가 Threshold 만큼만 있으면 서명을 위한 협업이 수행 됩니다.
+    
+    서명은 발의(Step -1) 부터 완료(Step 5)까지 7 단계의 Step을 진행하게 됩니다. 
+    
+    ```    
+      1. Creation of MPC Group
+      2. Signing
+      3. Member List
+      4. Update AccessToken
+      5. My MPC Group
+      9. Exit
+    Select Menu.  (1,2,3,4,5,9) : 2
+      1. Signing Participation Request
+      2. Join in the Signing
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) : 2
+    Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+    Do you join this Session? ([A]PPROVE, [R]EJECT) : a
+    Step: -1
+    Step: 0
+    Step: 1
+    Step: 2
+    Step: 3
+    Step: 4
+    Step: 5
+    Sigr: 0x18d6f655b73e9d5daeec915ff0e377321b280de4d2b13b9ab0e2ce6ca041ec78
+    Sigs: 0x349962293acc3ec8f266044c22779e865f3ee8b8f57f9545ad6f19ef76e7ab3d
+    Sigrecovery: 0
+      1. Signing Participation Request
+      2. Join in the Signing
+      8. Previous Menu
+      9. Exit
+    Select Menu.  (1,2,8,9) :
+    ```
+
 ## 제공되는 인터페이스
 
 인터페이스는 다음 링크를 통해 확인할 수 있습니다.
