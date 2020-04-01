@@ -247,7 +247,7 @@ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
 데모 사용 신청을 통해 미리 발급받은 유효한 Customer ID를 입력해야 정상적인 실행이 가능합니다.
 <br>
 * 예제) Customer ID가 00000000-0000-0000-0000-000000000000인 경우 
-<br>
+
 ```
 /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
 1. Login
