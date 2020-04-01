@@ -7,9 +7,7 @@
 펜타시큐리티의 MPC 데모 프로그램 제작을 위한 SDK를 제공합니다.
 <br>
 <br>
-영문 문서는 다음 링크를 통해 확인해주세요.
-<br>
-영문 문서 : <https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md>
+영문으로 작성된 문서를 확인하려면 [여기를 클릭하세요](<https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README.md>).
    
 - - -
    
@@ -26,15 +24,35 @@
 
 * [데모 제약 사항](#데모-제약-사항)
 
+* [데모 사용 신청](#데모-사용-신청)
+
 * [상업용 버전의 SDK 사용](#상업용-버전의-sdk-사용)
 
 3. [SDK 사용](#sdk-사용)
 
 * [디렉토리 구조](#디렉토리-구조)
 
-* [프로그램 테스트 방법](#프로그램-테스트-방법)
+* [인터페이스 목록](#인터페이스-목록)
 
-* [제공되는 인터페이스](#제공되는-인터페이스)
+* [데모 프로그램 셋팅](#데모-프로그램-셋팅)
+
+  * [다운로드](#다운로드)
+
+  * [빌드](#빌드)
+
+  * [실행](#실행)
+
+* [테스트 프로그램 사용](#데모-프로그램-사용)
+
+  * [Member 발급](#member-발급)
+  
+  * [Member 로그인](#member-로그인)
+  
+  * [MPC 그룹 생성](#mpc-그룹-생성)
+  
+  * [MPC 그룹 참여](#mpc-그룹-참여)
+  
+  * [MPC 서명](#mpc-서명)
 
 4. [연락처](#연락처)
 
@@ -134,10 +152,10 @@ mpc@pentasecurity.com
    
 # SDK 사용
 
-MPC SDK JAR(Java Archive)와 Native module로 구성 되어 있습니다.
+Penta MPC SDK는 SDK Jar(Java Archive)와 Native module로 구성 되어 있습니다.
 <br><br>
 Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
-<br><br>
+<br>
 Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다.
 <br>
 Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
@@ -170,7 +188,75 @@ Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야
     └ pcw-common-1.6.2-SNAPSHOT.jar     : PentaMPC Common Java Archive
 ```
 
-## 프로그램 테스트 방법
+## 인터페이스 목록
+
+Penta MPC SDK를 통해 제공되는 인터페이스를 확인하려면 [여기를 클릭하세요](<https://pentasecurity.github.io/mpc-demo-sdk/>).
+
+## 데모 프로그램 셋팅
+
+Penta MPC SDK를 사용하는 데모 프로그램을 사용하기 위해서는 아래 내용에서 설명하는 절차가 필요합니다.
+
+### 다운로드
+
+다음과 같이 데모 프로그램을 다운로드 받습니다.
+<br>
+다운로드가 완료되면 디렉토리 및 구성 파일이 모두 존재하는지 확인합니다.
+
+```
+/home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
+Cloning into 'mpc-demo-sdk'...
+remote: Enumerating objects: 83, done.
+remote: Counting objects: 100% (83/83), done.
+remote: Compressing objects: 100% (67/67), done.
+remote: Total 83 (delta 16), reused 49 (delta 1), pack-reused 0
+Unpacking objects: 100% (83/83), done.
+/home/mpc> ls
+mpc-demo-sdk
+/home/mpc> cd mpc-demo-sdk
+/home/mpc/mpc-demo-sdk> ls
+LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
+/home/mpc/mpc-demo-sdk> cd MPCDemo
+```
+
+### 빌드
+
+다음과 같이 데모 프로그램을 빌드합니다.
+<br>
+빌드가 완료되면 디렉토리 및 구성 파일이 모두 존재하는지 확인합니다.
+
+```
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle build
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 up-to-date
+/home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
+/home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
+MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
+```
+
+### 실행
+
+데모 프로그램을 실행하려는 경우, 데모 사용 신청을 접수하여 메일 인증을 받고 Customer ID를 발급받아야 합니다.
+<br>
+데모 사용 신청은 [여기를 클릭하여](#http://10.0.121.41:18080/join) 진행할 수 있습니다.
+<br>
+<br>
+데모 프로그램 실행 시 -c 옵션으로 Customer ID를 입력할 수 있습니다.
+<br>
+데모 사용 신청을 통해 미리 발급받은 유효한 Customer ID를 입력해야 정상적인 실행이 가능합니다.
+<br>
+* 예제) Customer ID가 00000000-0000-0000-0000-000000000000인 경우 
+<br>
+```
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
+1. Login
+2. Create member
+9. Exit
+Select Menu.  (1,2,9) : 
+```
+
+## 테스트 프로그램 사용
 
 Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
 
@@ -453,11 +539,9 @@ LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat 
     Select Menu.  (1,2,8,9) :
     ```
 
-## 제공되는 인터페이스
+## 인터페이스 목록
 
-인터페이스는 다음 링크를 통해 확인할 수 있습니다.
-<br>
-인터페이스 문서 : <https://pentasecurity.github.io/mpc-demo-sdk/>
+Penta MPC SDK를 통해 제공되는 인터페이스를 확인하려면 [여기를 클릭하세요](<https://pentasecurity.github.io/mpc-demo-sdk/>).
    
 - - -
    
