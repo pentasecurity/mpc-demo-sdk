@@ -433,7 +433,9 @@ Please enter Session ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
 
 MPC 그룹 생성이 완료되면 MPC Group ID, Member의 Group Index, MPC Group Public key, 개인키 쌍 및 Secret 값이 출력 됩니다.
 <br>    
-MPC Group의 비밀키는 MPC의 특성상 알 수 없고, 서버에도 저장되지 않습니다. 서명 시 각 개인이 받은 정보로 협업을 해서 서명이 이루어 집니다.
+MPC Group의 비밀키는 MPC의 특성상 알 수 없고, 서버에도 저장되지 않습니다.
+<br>
+서명 시 각 개인이 받은 정보로 협업을 해서 서명이 이루어 집니다.
 <br>
 <br>
 MPC Group 생성은 발의(Step -1) 부터 완료(Step 3)까지 5단계의 Step을 진행하게 됩니다. 
