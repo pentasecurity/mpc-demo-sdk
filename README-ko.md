@@ -42,7 +42,7 @@
 
   * [실행](#실행)
 
-* [테스트 프로그램 사용](#데모-프로그램-사용)
+* [테스트 프로그램 사용](#테스트-프로그램-사용)
 
   * [Member 발급](#member-발급)
   
@@ -250,119 +250,107 @@ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
 
 ```
 /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
-1. Login
-2. Create member
-9. Exit
+   1. Login
+   2. Create member
+   9. Exit
 Select Menu.  (1,2,9) : 
 ```
 
 ## 테스트 프로그램 사용
 
-Demo 프로그램은 PentaMPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
+데모 프로그램은 Penta MPC SDK를 이용하여 MPC 기능을 테스트해 볼수 있도록 구성되어 있습니다.
+<br>
+<br>
+데모 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에 프로그램의 재시작 시 키가 보존되지 않습니다.
+<br>
+테스트가 아닌 실사용을 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 저장소에 보관하여야 합니다. 
+    
+### member 발급
 
-Demo 프로그램은 MPC Group 생성시 각 Member에게 생성되는 Key 쌍을 HashMap으로만 관리하기 때문에
-프로그램의 재시작 시 키가 보존 되지 않습니다.
+Penta MPC 기능을 사용하는 주체인 Member를 발급합니다.
+<br>
+Member가 모여서 Group을 생성하고, Group 내에서 MPC 서명을 진행할 수 있습니다.
+<br>
+<br>
+* 예제) 아래 제공되는 예제는 Customer ID가 00000000-0000-0000-0000-000000000000이고,
+<br>
+member1, member2, member3의 3개의 Member를 발급하는 예제입니다.
 
-실제 사용을 위해서는 Demo 프로그램에서 생성되는 Key 쌍을 DB등의 별도 저장소에 보관하여야 합니다.
-
-* 다운로드
 ```
-/home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
-Cloning into 'mpc-demo-sdk'...
-remote: Enumerating objects: 83, done.
-remote: Counting objects: 100% (83/83), done.
-remote: Compressing objects: 100% (67/67), done.
-remote: Total 83 (delta 16), reused 49 (delta 1), pack-reused 0
-Unpacking objects: 100% (83/83), done.
-/home/mpc> ls
-mpc-demo-sdk
-/home/mpc> cd mpc-demo-sdk
-/home/mpc/mpc-demo-sdk> ls
-LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
-/home/mpc/mpc-demo-sdk> cd MPCDemo
-```
-* 빌드 및 테스트
-    * 빌드
-    ```
-    /home/mpc/mpc-demo-sdk/MPCDemo> gradle build
-    BUILD SUCCESSFUL in 1s
-    2 actionable tasks: 2 up-to-date
-    /home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
-    /home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
-    /home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
-    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
-    MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
-    ```
-    * Demo 실행을 위한 CustomerID 받기
-    
-    http://localhost:18080/join 에 접속 해서 가입을 하면 CustomerID를 메일로 받을 수 있습니다.
+// Customer ID를 옵션으로 입력하여 데모 프로그램 실행
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
 
-    * 실행 및 Member 계정 생성
-    
-    데모프로그램 실행 시 -c 옵션에 메일로 받은 CustomerID를 주어야 합니다. 
-    
-    아래 예제는 CustomerID가 00000000-0000-0000-0000-000000000000이고, member1, member2, member3 의 3개의 Member로 테스트 하는 예제 입니다. 
-    
-    * member 생성
-    ```
-    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
-      1. Login
-      2. Create member
-      9. Exit
-    Select Menu.  (1,2,9) : 2
-    Please enter ID : member1
-    Please enter Name : MEMBER1
-    Please enter Password:
-    Please enter your password again:
-      1. Login
-      2. Create member
-      9. Exit
-    Select Menu.  (1,2,9) : 2
-    Please enter ID : member2
-    Please enter Name : MEMBER2
-    Please enter Password:
-    Please enter your password again:
-      1. Login
-      2. Create member
-      9. Exit
-    Select Menu.  (1,2,9) : 2
-    Please enter ID : member3
-    Please enter Name : MEMBER3
-    Please enter Password:
-    Please enter your password again:
-      1. Login
-      2. Create member
-      9. Exit
-    Select Menu.  (1,2,9) :
-    ```
-    * PentaMPC Server Login
-    ```
-    Please enter your password again:
-      1. Login
-      2. Create member
-      9. Exit
-    Select Menu.  (1,2,9) : 1
-    Member ID : member1
-    Password:
-      1. Creation of MPC Group
-      2. Signing
-      3. Member List
-      4. Update AccessToken
-      5. My MPC Group
-      9. Exit
-    Select Menu.  (1,2,3,4,5,9) :
-    ```
-    * 로그인은  -m과 -p로 할 수도 있습니다.
-    ```
-    /home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -m member1 -p password -c 00000000-0000-0000-0000-000000000000
-      1. Creation of MPC Group
-      2. Signing
-      3. Member List
-      4. Update AccessToken
-      5. My MPC Group
-      9. Exit
-    Select Menu.  (1,2,3,4,5,9) :    
-    ```
+// Member 발급 (member1)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member1
+Please enter Name : MEMBER1
+Please enter Password:
+Please enter your password again:
+
+// Member 발급 (member2)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member2
+Please enter Name : MEMBER2
+Please enter Password:
+Please enter your password again:
+
+// Member 발급 (member3)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member3
+Please enter Name : MEMBER3
+Please enter Password:
+Please enter your password again:
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) :
+```
+
+### Member 로그인
+
+발급된 Member를 MPC Server로 로그인합니다.
+<br>
+로그인 된 Member들이 상호간의 통신을 거쳐 Group을 생성하고, Group 내에서 MPC 서명을 진행할 수 있습니다.
+<br>
+<br>
+* 예제) 아래 제공되는 예제는 Member ID가 member1인 Member가 로그인하는 예제입니다.
+```
+Please enter your password again:
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 1
+Member ID : member1
+Password:
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) :
+```
+<br>
+* 예제) -m -p 옵션으로 Member ID가 member1인 Member가 로그인하는 예제입니다.
+```
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -m member1 -p password -c 00000000-0000-0000-0000-000000000000
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken   
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) :    
+```
     *  MPC Group 생성 발의
 
     MPC Group은 2 ~ 10의 Member의 참여로 생성합니다. 아래 예는 3명이 참여하고, 서명시 2명의 참여가 필요한(이 후 <b>Threshold</b>) MPC Group를 생성하는 예입니다.
