@@ -12,6 +12,7 @@
 - - -
    
 # 목차
+
 1. [시작하며](#시작하며)
 
 * [MPC란](#mpc란)
@@ -54,7 +55,11 @@
   
   * [MPC 그룹 생성](#mpc-그룹-생성)
   
-  * [MPC 서명](#mpc-서명)
+  * [MPC 서명 발의](#mpc-서명-발의)
+  
+  * [MPC 서명 참여](#mpc-서명-참여)
+  
+  * [MPC 서명 생성](#mpc-서명-생성)
 
 4. [연락처](#연락처)
 
@@ -488,77 +493,101 @@ MemberID : member3    Index: 1
 Select Menu.  (1,2,3,4,5,9) :
 ```
     
-### MPC 서명
-    
-    MPC Group이 생성되었으면 이제 서명을 진행 할 수 있습니다.
-    서명을 위한 참여는 최소한 MPC Group 생성 시 지정한 Threshold 만큼의 Member 참여가 필요 합니다. 
-    
-    따라서 위 예저에서 member1, member2, member3로 Member 크기는 3이고, Threshold가 2이므로 서명시 Threshold는 2~3을 지정 할 수 있습니다.
-    
-    Threshold에 2를 주면 member 하나가 거부를 하더라도 서명이 가능합니다. 모든 참여자의 참여를 원한다면 Threshold를 3으로 해서 모든 Member가 참여 해야만 서명이 되도록 할 수 있습니다.  
-    ```
-      1. Creation of MPC Group
-      2. Signing
-      3. Member List
-      4. Update AccessToken
-      5. My MPC Group
-      9. Exit
-    Select Menu.  (1,2,3,4,5,9) : 2
-      1. Signing Participation Request
-      2. Join in the Signing
-      8. Previous Menu
-      9. Exit
-    Select Menu.  (1,2,8,9) : 1
-    Message : Message to sign.
-    MPC Group ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
-    Threshold : [2]
-    comment : comment..
-    [Signing] Session ID: a0dd096f-eb1b-460d-ba2a-cfae2015faeb
-    Step: -1
-    ```
-    member3는 받은 Session ID를 이용하여 Session에 참여를 합니다.
+### MPC 서명 발의
 
-    참여자는 Group의 Member 중 아무나 참여가 가능하고, MPC Group 생성과 같이 거부할 수 있습니다.
-    하지만 MPC Group 생성과 다르게 한 Member가 거부하더라도 참여 승인을 하는 Member 수가 Threshold 만큼만 있으면 서명을 위한 협업이 수행 됩니다.
-    
-    서명은 발의(Step -1) 부터 완료(Step 5)까지 7 단계의 Step을 진행하게 됩니다. 
-    
-    ```    
-      1. Creation of MPC Group
-      2. Signing
-      3. Member List
-      4. Update AccessToken
-      5. My MPC Group
-      9. Exit
-    Select Menu.  (1,2,3,4,5,9) : 2
-      1. Signing Participation Request
-      2. Join in the Signing
-      8. Previous Menu
-      9. Exit
-    Select Menu.  (1,2,8,9) : 2
-    Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
-    Do you join this Session? ([A]PPROVE, [R]EJECT) : a
-    Step: -1
-    Step: 0
-    Step: 1
-    Step: 2
-    Step: 3
-    Step: 4
-    Step: 5
-    Sigr: 0x18d6f655b73e9d5daeec915ff0e377321b280de4d2b13b9ab0e2ce6ca041ec78
-    Sigs: 0x349962293acc3ec8f266044c22779e865f3ee8b8f57f9545ad6f19ef76e7ab3d
-    Sigrecovery: 0
-      1. Signing Participation Request
-      2. Join in the Signing
-      8. Previous Menu
-      9. Exit
-    Select Menu.  (1,2,8,9) :
-    ```
+MPC 그룹이 생성되었으면 이제 서명을 진행 할 수 있습니다.
+<br>
+서명을 위한 참여는 최소한 MPC 그룹 생성 시 지정한 Threshold 만큼의 Member 참여가 필요 합니다. 
+<br>
+<br>
+따라서 위 예저에서 member1, member2, member3로 Member 크기는 3이고, Threshold가 2이므로 서명시 Threshold는 2~3을 지정 할 수 있습니다.
+<br>
+Threshold에 2를 주면 member 하나가 거부를 하더라도 서명이 가능합니다.
+<br>
+모든 참여자의 참여를 원한다면 Threshold를 3으로 해서 모든 Member가 참여 해야만 서명이 되도록 할 수 있습니다.
+```
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 1
+Message : Message to sign.
+MPC Group ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+Threshold : [2]
+comment : comment..
+[Signing] Session ID: a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+Step: -1
+```
 
-## 인터페이스 목록
+### MPC 서명 참여
 
-Penta MPC SDK를 통해 제공되는 인터페이스를 확인하려면 [여기를 클릭하세요](<https://pentasecurity.github.io/mpc-demo-sdk/>).
-   
+member3는 받은 Session ID를 이용하여 Session에 참여를 합니다.
+<br>
+참여자는 Group의 Member 중 아무나 참여가 가능하고, MPC Group 생성과 같이 거부할 수 있습니다.
+<br>
+하지만 MPC Group 생성과 다르게 한 Member가 거부하더라도 참여 승인을 하는 Member 수가 Threshold 만큼만 있으면 서명을 위한 협업이 수행 됩니다.
+```
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 2
+Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+```
+
+### MPC 서명 생성
+
+서명의 결과값으로는 R값, S값을 출력합니다.
+<br>
+<br>
+서명은 발의(Step -1) 부터 완료(Step 5)까지 7 단계의 Step을 진행하게 됩니다. 
+
+```    
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 2
+Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+Do you join this Session? ([A]PPROVE, [R]EJECT) : a
+Step: -1
+Step: 0
+Step: 1
+Step: 2
+Step: 3
+Step: 4
+Step: 5
+Sigr: 0x18d6f655b73e9d5daeec915ff0e377321b280de4d2b13b9ab0e2ce6ca041ec78
+Sigs: 0x349962293acc3ec8f266044c22779e865f3ee8b8f57f9545ad6f19ef76e7ab3d
+Sigrecovery: 0
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) :
+```
+
 - - -
    
 # 연락처
