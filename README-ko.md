@@ -528,9 +528,9 @@ Step: -1
 
 ### MPC 서명 참여
 
-member3는 받은 Session ID를 이용하여 Session에 참여를 합니다.
+발의자가 아닌 Member는 받은 Session ID를 이용하여 Session에 참여를 합니다.
 <br>
-참여자는 Group의 Member 중 아무나 참여가 가능하고, MPC Group 생성과 같이 거부할 수 있습니다.
+참여자는 그룹의 Member 중 아무나 참여가 가능하고, MPC Group을 생성하는 절차와 동일하게 참여 또는 거부 의사를 표현할 수 있습니다.
 <br>
 하지만 MPC Group 생성과 다르게 한 Member가 거부하더라도 참여 승인을 하는 Member 수가 Threshold 만큼만 있으면 서명을 위한 협업이 수행 됩니다.
 ```
