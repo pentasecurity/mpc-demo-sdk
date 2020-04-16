@@ -176,30 +176,66 @@ Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야
 <br>
 * 예제)
 <pre> 
- $ ls /opt/pentampc
- native                              mpc-sdk-1.0-SNAPSHOT.jar          
- mpc-sdk-1.0-SNAPSHOT-javadoc.jar    pcw-common-1.6.2-SNAPSHOT.jar
- $ ls /opt/pentampc/native
- libPenta_MPC-0.2.0.0211.e8c9.android.x86.tar.gz          libPenta_MPC-0.2.0.0211.e8c9.Darwin.tar.gz
- libPenta_MPC-0.2.0.0211.e8c9.android.x86_64.tar.gz       libPenta_MPC-0.2.0.0211.e8c9.android.arm64-v8a.tar.gz    
- libPenta_MPC-0.2.0.0211.e8c9.ios.tar.gz                  libPenta_MPC-0.2.0.0211.e8c9.android.armeabi-v7a.tar.gz  
- libPenta_MPC-0.2.0.0211.e8c9.linux.x64.tar.gz            libPenta_MPC-0.2.0.0211.e8c9.linux.x64.so
+ // MPC Demo를 받습니다.
+ $ cd /opt
+ $ git clone https://github.com/pentasecurity/mpc-demo-sdk.git
+ $ cd mpc-demo-sdk
+ $ ls
+ LICENSE  MPCDemo  MPCSdk   README-ko.md  README.md         build.gradle  
+ docs     gradle   gradlew  gradlew.bat   settings.gradle
+ 
+ // 사용하는 native 라이브러리를 풀어서 사용용합니다.
+ $ cd MPCSdk/native/
+ $ ls
+ libPenta_MPC-0.2.1.0403.35ce.Windows.x64.zip    libPenta_MPC-0.2.1.0403.35ce.darwin.tar.gz
+ libPenta_MPC-0.2.1.0403.35ce.linux.x64.tar.gz
+ $ gzip -dc libPenta_MPC-0.2.1.0403.35ce.linux.x64.tar.gz | tar xvf -   
  libPenta_MPC.so
- $ java -cp /opt/pentampc/mpc-sdk-1.0-SNAPSHOT.jar:/opt/pentampc/pcw-common-1.6.2-SNAPSHOT.jar:. -Djava.library.path=/opt/pentampc/native com.mpcdemo
+ libPenta_MPC_linux_x64_0.2.1.0403.35ce.so
+ $ ls
+ libPenta_MPC-0.2.1.0403.35ce.Windows.x64.zip   libPenta_MPC.so
+ libPenta_MPC-0.2.1.0403.35ce.darwin.tar.gz     libPenta_MPC_linux_x64_0.2.1.0403.35ce.so
+ libPenta_MPC-0.2.1.0403.35ce.linux.x64.tar.gz
+ 
+ // Build 합니다.
+ $ cd ../..
+ $ gradle build
+ Starting a Gradle Daemon (subsequent builds will be faster)
+ 
+ BUILD SUCCESSFUL in 8s
+ 3 actionable tasks: 2 executed, 1 up-to-date
+ 
+ // 사용하는 모듈을 build/release로 복사하여 바로 실행 가능한 형태로 만듭니다. 
+ $ gradle copyRelease
+ 
+ BUILD SUCCESSFUL in 1s
+ 3 actionable tasks: 1 executed, 2 up-to-date
+ 
+ // build 된 모듈을 바로 가능한 형태로 복사한 디렉토리로 이동하여 실행 합니다.
+ $ cd MPCDemo/build/release/
+ $ ls
+ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
+ $ ./MPCDemo.sh
+   1. Login
+   2. Create member
+   9. Exit
+ Select Menu.  (1,2,9) : 
 </pre>
 
 ## 디렉토리 구조
 
 ```
 ┬ MPCDemo             : MPC Demo 
-│   ├ bin             : Start Script
-│   ├ src             : Demo source
+│   ├ bin/            : Start Script
+│   ├ src/            : Demo source
 │   └ build.gradle    : gradle script
-└ MPCSdk              : PentaMPC SDK
-    ├ native          : PentaMPC native modules
-    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar  : PentaMPC javadoc
-    ├ mpc-sdk-1.0-SNAPSHOT.jar          : PentaMPC Java Archive
-    └ pcw-common-1.6.2-SNAPSHOT.jar     : PentaMPC Common Java Archive
+├ MPCSdk              : PentaMPC SDK
+│    ├ native/        : PentaMPC native modules
+│    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar  : PentaMPC javadoc
+│    ├ mpc-sdk-1.0-SNAPSHOT.jar          : PentaMPC Java Archive
+│    └ pcw-common-1.6.2-SNAPSHOT.jar     : PentaMPC Common Java Archive
+└ docs/ : MPCSdk Javadoc
+              
 ```
 
 ## 인터페이스 목록
