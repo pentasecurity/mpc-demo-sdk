@@ -523,6 +523,7 @@ MPC Group Name       : MPC Group for testing
 Owner                : member1
 Threshold            : 2
 Group Size           : 0
+Algorithm            : ecdsa_256k1
 MPC Group PubKey     : 0x02d58fb448606b5a53f6498999f9cbc3363c432551a68529a1168fe3b9a79e7728
 My PubKey            : 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20ad2d408043f
 My PriKey            : 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
