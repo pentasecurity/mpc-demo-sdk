@@ -4,15 +4,34 @@ import com.pentampc.demo.utils.MPCConsoleUtils;
 import com.pentasecurity.mpc.*;
 import com.pentasecurity.mpc.exceptions.MPCException;
 import com.pentasecurity.mpc.exceptions.SigningInitException;
+import com.pentasecurity.mpc.model.MPCGroup;
 import com.pentasecurity.mpc.request.SigningParam;
+import com.pentasecurity.mpc.response.MPCGroupResponse;
 import com.pentasecurity.mpc.response.MPCGroupSessionResponse;
 import com.pentasecurity.mpc.response.MPCSuccessResponse;
 import com.pentasecurity.mpc.response.NormalResponse;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Signing {
+
+    /**
+     * sha256 ()
+     * @param msg
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
+    public static byte[] sha256(String msg) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(msg.getBytes());
+
+        return md.digest();
+    }
+
+
     public int selectMenu() {
         while(true) {
             int idx = Menu.SigningMenu();
@@ -62,7 +81,13 @@ public class Signing {
             SigningParam signingParam = null;
             try {
 
-                signingParam = new SigningParam("0x"+ DatatypeConverter.printHexBinary(message.getBytes()), threshold);
+                MPCGroup mpcGroup = MPCDemo.apiService.getMPCGroup(MemberLogin.getAccessToken(), mpcGroupId).getMPCGroup();
+                if (mpcGroup.getAlgorithm().equals(EnumDefined.Algorithm.ed25519.toString())) {
+                    signingParam = new SigningParam("0x"+ DatatypeConverter.printHexBinary(message.getBytes()), threshold);
+                } else {
+                    signingParam = new SigningParam("0x"+ DatatypeConverter.printHexBinary(sha256(message)), threshold);
+                }
+
                 signingParam.setSessionTimeout(5);
 
                 if (null == comment || comment.equals("")) {
@@ -80,7 +105,7 @@ public class Signing {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } catch (SigningInitException e) {
+            } catch (SigningInitException | NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
         }
@@ -127,19 +152,19 @@ public class Signing {
         }
 
         if (isJoin) {
-            MPCGroupSessionResponse aa = MPCDemo.apiService.getSessionInfo(MemberLogin.getAccessToken(), sessionId);
-            if (0 == aa.getCode()) {
-                mpcGroupId = aa.getMPCGroupSession().getMpcGroupId();
+            MPCGroupSessionResponse mpcGroupSessionResponse = MPCDemo.apiService.getSessionInfo(MemberLogin.getAccessToken(), sessionId);
+
+            if (0 == mpcGroupSessionResponse.getCode()) {
+                mpcGroupId = mpcGroupSessionResponse.getMPCGroupSession().getMpcGroupId();
                 mpcKey = MPCDemo.getMPCKey(mpcGroupId);
                 if (null == mpcKey) {
                     System.out.println("Not found MPC Key");
                     return;
                 }
             } else {
-                System.out.println(String.format("getSessionInfo ERROR: %s  [%d]", aa.getMsg(), aa.getCode()));
+                System.out.println(String.format("getSessionInfo ERROR: %s  [%d]", mpcGroupSessionResponse.getMsg(), mpcGroupSessionResponse.getCode()));
                 return;
             }
-
             MPCSigning mpcSigning = new MPCSigning(mpcKey, MPCDemo.apiService);
             int step = -100;
             while (false == mpcSigning.update(MemberLogin.getAccessToken(), sessionId)) {
@@ -155,13 +180,20 @@ public class Signing {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {}
             }
+            String algorithm = mpcGroupSessionResponse.getMPCGroupSession().getAlgorithm();
 
             if (mpcSigning.isSuccess()) {
-                MPCSign mpcSign = mpcSigning.getMPCSign();
 
-                System.out.println(String.format("Sigr: %s", mpcSign.getSigr()));
-                System.out.println(String.format("Sigs: %s", mpcSign.getSigs()));
-                System.out.println(String.format("Sigrecovery: %s", mpcSign.getSigrecovery()));
+                MPCSign mpcSign = mpcSigning.getMPCSign();
+                System.out.println(String.format("algorithm:[%s]   %s ", algorithm, EnumDefined.Algorithm.ed25519.toString()));
+                System.out.println(algorithm.equals(EnumDefined.Algorithm.ed25519.toString()));
+                if (algorithm.equals(EnumDefined.Algorithm.ed25519.toString())) {
+                    System.out.println(String.format("Sig: %s", mpcSign.getSig()));
+                } else {
+                    System.out.println(String.format("Sigr: %s", mpcSign.getSigr()));
+                    System.out.println(String.format("Sigs: %s", mpcSign.getSigs()));
+                    System.out.println(String.format("Sigrecovery: %s", mpcSign.getSigrecovery()));
+                }
             } else {
                 System.out.println(String.format("ERROR: %s", mpcSigning.getErrorMessage()));
             }

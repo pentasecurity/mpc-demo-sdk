@@ -1,6 +1,7 @@
 package com.pentampc.demo;
 
 import com.pentampc.demo.utils.MPCConsoleUtils;
+import com.pentasecurity.mpc.EnumDefined;
 import com.pentasecurity.mpc.MPCKey;
 import com.pentasecurity.mpc.exceptions.InvalidAddressException;
 import com.pentasecurity.mpc.model.MPCGroup;
@@ -19,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MPCDemo {
-    //protected static String serverUrl = "http://localhost:8080";
-    protected static String serverUrl = "http://10.0.121.41:8080";
+    protected static String serverUrl = "https://kchwang.mshome.net:8443/";
+    //protected static String serverUrl = "http://10.0.121.41:8080";
     private static String memberid = null;
     private static String password = null;
     protected static Command command = null;
@@ -70,8 +71,8 @@ public class MPCDemo {
         networkService.baseUrl(serverUrl);
 
         /* When using a proxy. */
-        java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
-        networkService.proxy(proxy);
+        //java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
+        //networkService.proxy(proxy);
 
         return networkService.getApiClient();
     }
@@ -152,6 +153,7 @@ public class MPCDemo {
             System.out.println(String.format("%-20s : %s", "Owner", mpcGroup.getOwnerId()));
             System.out.println(String.format("%-20s : %s", "Threshold", mpcGroup.getThreshold()));
             System.out.println(String.format("%-20s : %s", "Group Size", mpcGroup.getMpcgroupSize()));
+            System.out.println(String.format("%-20s : %s", "Algorithm", mpcGroup.getAlgorithm()));
             MPCKey mpcKey = MPCDemo.getMPCKey(mpcGroup.getMpcGroupId());
             if (null == mpcKey) {
                 System.out.println(String.format("MPC Key Not Found!."));
@@ -160,6 +162,9 @@ public class MPCDemo {
                 System.out.println(String.format("%-20s : %s", "My PubKey", mpcKey.getMemberPubKey()));
                 System.out.println(String.format("%-20s : %s", "My PriKey", mpcKey.getMemberPriKey()));
                 System.out.println(String.format("%-20s : %s", "My Secret", mpcKey.getMemberSecret()));
+                if (mpcGroup.getAlgorithm().equals(EnumDefined.Algorithm.ed25519.toString())) {
+                    System.out.println(String.format("%-20s : %s", "My Secret", mpcKey.getMemberSecret()));
+                }
             }
 
             for (MPCGroupMember member : mpcGroup.getMemberList()) {

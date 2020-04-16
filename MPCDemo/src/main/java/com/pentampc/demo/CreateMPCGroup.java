@@ -33,17 +33,42 @@ public class CreateMPCGroup {
             }
         }
     }
+    public EnumDefined.Algorithm selectAlgorithm() {
+        while(true) {
+
+            Options options = new Options();
+            options.addOption(new Option(1, "ecdsa_256k1"));
+            options.addOption(new Option(2, "ecdsa_p256"));
+            options.addOption(new Option(3, "ed25519"));
+            options.printMenu();
+
+            int idx = options.InputMenu("Select an algorithm.");
+
+            switch (idx) {
+                case 1:
+                    return EnumDefined.Algorithm.ecdsa_256k1;
+                case 2:
+                    return EnumDefined.Algorithm.ecdsa_p256;
+                case 3:
+                    return EnumDefined.Algorithm.ed25519;
+            }
+        }
+    }
     public void Request() {
         String memberIds = "";
         String sthreshold = "";
         String comment = "";
         String name = "";
+        EnumDefined.Algorithm algorithm = EnumDefined.Algorithm.ecdsa_256k1;
 
         while (true) {
             memberIds = MPCConsoleUtils.InputString("list of MemberIDs. (separator is comma(,))", memberIds);
+
             sthreshold = MPCConsoleUtils.InputString("number of members required for signing", sthreshold);
             name = MPCConsoleUtils.InputString("name", name, false);
             comment = MPCConsoleUtils.InputString("comment", comment, false);
+
+            algorithm = selectAlgorithm();
 
             String[] arrMembers = memberIds.split(",");
             int threshold = Integer.parseInt(sthreshold, 10);
@@ -53,9 +78,10 @@ public class CreateMPCGroup {
             keygenParam.setSessionTimeout(5);
             keygenParam.setComment(comment);
             keygenParam.setName(name);
+            keygenParam.setAlgorithm(algorithm);
 
             for (String s : arrMembers) {
-                keygenParam.addMembers(s);
+                keygenParam.addMembers(s.trim());
             }
 
             try {
