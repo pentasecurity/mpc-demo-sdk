@@ -28,17 +28,7 @@ public class MPCConsoleUtils {
         return s;
     }
 
-    private static String hex(String s) {
-        if (null == s || 0==s.length()) {
-            return "";
-        }
-        System.out.println(s);
-        StringBuilder sb = new StringBuilder();
-        for (int i=0; i<s.length(); i++) {
-            sb.append(String.format("%02X", (int)s.charAt(i)));
-        }
-        return sb.toString();
-    }
+
     public static String InputString(String msg, String def) {
         return InputString(msg, def, true);
     }
@@ -50,7 +40,7 @@ public class MPCConsoleUtils {
             } else {
                 message = console.readLine(String.format("%s : [%s] ", msg, defaultString(def)));
             }
-            System.out.println(String.format("%s", hex(message)));
+
             if (null == message) {
                 System.exit(0);
             }

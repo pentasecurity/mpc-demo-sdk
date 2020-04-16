@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MPCDemo {
-    protected static String serverUrl = "https://kchwang.mshome.net:8443/";
-    //protected static String serverUrl = "http://10.0.121.41:8080";
+    //protected static String serverUrl = "http://kchwang.mshome.net:8080/";
+    protected static String serverUrl = "http://10.0.121.41:8080";
     private static String memberid = null;
     private static String password = null;
     protected static Command command = null;
@@ -163,7 +163,7 @@ public class MPCDemo {
                 System.out.println(String.format("%-20s : %s", "My PriKey", mpcKey.getMemberPriKey()));
                 System.out.println(String.format("%-20s : %s", "My Secret", mpcKey.getMemberSecret()));
                 if (mpcGroup.getAlgorithm().equals(EnumDefined.Algorithm.ed25519.toString())) {
-                    System.out.println(String.format("%-20s : %s", "My Secret", mpcKey.getMemberSecret()));
+                    System.out.println(String.format("%-20s : %s", "SchemeSum", mpcKey.getSchemeSum()));
                 }
             }
 

@@ -401,6 +401,10 @@ list of MemberIDs. (separator is comma(,)) : member2,member3
 number of members required for signing : 2
 name : MPC Group for testing
 comment : testing...
+  1. ecdsa_256k1
+  2. ecdsa_p256
+  3. ed25519
+Select an algorithm.  (1,2,3) : 1
 [createGroup] Session ID: 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
 Step: -1
 ```
@@ -479,7 +483,7 @@ Select Menu.  (1,2,8,9) : 8
 Select Menu.  (1,2,3,4,5,9) : 5
 ================================================================================================
 MPC Group ID         : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
-MPC Group Name       : dd
+MPC Group Name       : MPC Group for testing
 Owner                : member1
 Threshold            : 2
 Group Size           : 0
@@ -488,8 +492,8 @@ My PubKey            : 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20
 My PriKey            : 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
 My Secret            : 0x4ef8b2664bf8406867c42a6ac19e422480e62579af1e74956da3cad5d5770bed
 MemberID : member1    Index: 0
-MemberID : member2    Index: 0
-MemberID : member3    Index: 1
+MemberID : member2    Index: 1
+MemberID : member3    Index: 2
 ================================================================================================
    1. Creation of MPC Group
    2. Signing
