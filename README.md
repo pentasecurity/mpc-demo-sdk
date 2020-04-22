@@ -33,9 +33,33 @@ Penta Security provides SDK for Penta MPC Demo Program.
 
 * [Structure of Directory](#structure-of-directory)
 
-* [Testing the Program](#testing-the-program)
+* [Interface](#interface)
 
-* [Provided Interface](#provided-interface)
+* [Demo Program Setting](#demo-program-setting)
+
+  * [Download](#download)
+
+  * [Build](#build)
+
+  * [Starting the Demo Program](#starting-the-demo-program)
+
+* [Testing Demo Program](#testing-demo-program)
+
+  * [Create Members](#create-members)
+
+  * [Log in for Members](#log-in-for-members)
+
+  * [Initiation of MPC Group Formation](#initiation-of-mpc-group-formation)
+  
+  * [Participation of MPC Group](#participation-of-mpc-group)
+  
+  * [Creation of MPC Group](#creation-of-mpc-group)
+  
+  * [Initation of MPC Signature Approval](#initation-of-mpc-signature-approval)
+  
+  * [Participation of MPC Signature Generation](#participation-of-mpc-signature-generation)
+  
+  * [Creation of MPC Signature](#creation-of-mpc-signature)
 
 4. [Contact Information](#contact-information)
 
