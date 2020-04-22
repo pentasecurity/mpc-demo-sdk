@@ -27,6 +27,8 @@ Document printed in Korean : <https://github.com/pentasecurity/mpc-demo-sdk/blob
 
 * [Restrictions on Demo](#restrictions-on-demo)
 
+* [Registering for Demo Testing](#registering-for-demo-testing)
+
 * [Using the Commercial Version of SDK](#using-the-commercial-version-of-sdk)
 
 3. [Using SDK](#using-sdk)
@@ -113,6 +115,13 @@ Therefore, the input of N-out-of-M quorum is mandatory to authorize MPC operatio
 ```
 * The value for “MPC Group” and “Members” will be reset on a monthly basis.
 
+## Registering for Demo Testing
+
+[Please follow this link](<http://10.0.121.41:18080/join>) to request testing for MPC demo. 
+<br>
+Once the form is complete and registered, you will receive an email from us in your inbox. 
+<br>
+After verifying the email address, Customer ID will be issued so that you may gain access to the demo program.
 
 ## Using the Commercial Version of SDK
 
