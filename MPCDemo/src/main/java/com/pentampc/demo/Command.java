@@ -40,7 +40,7 @@ public class Command {
         System.out.println("  -c,--customerid <arg>     Customer ID.");
         System.out.println("  -m,--memberid <arg>       MemberId.");
         System.out.println("  -p,--password <arg>       Member password.");
-        System.out.println("  -s,--server <arg>         Penta MPC Server URL.(default: http://10.0.121.41:8080)");
+        System.out.println("  -s,--server <arg>         Penta MPC Server URL.(default: "+MPCDemo.serverUrl+")");
         System.out.println("");
     }
     public String getServer() {

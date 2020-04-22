@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MPCDemo {
-    //protected static String serverUrl = "http://kchwang.mshome.net:8080/";
-    protected static String serverUrl = "http://10.0.121.41:8080";
+    protected static String serverUrl = "https://mpc.pentasecurity.com:8443";
     private static String memberid = null;
     private static String password = null;
     protected static Command command = null;

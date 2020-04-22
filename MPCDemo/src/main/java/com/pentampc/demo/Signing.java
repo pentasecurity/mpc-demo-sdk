@@ -90,7 +90,7 @@ public class Signing {
 
                 signingParam.setSessionTimeout(5);
 
-                if (null == comment || comment.equals("")) {
+                if (null != comment && comment.trim().length() > 0) {
                     signingParam.setComment(comment);
                 }
                 try {
@@ -185,8 +185,6 @@ public class Signing {
             if (mpcSigning.isSuccess()) {
 
                 MPCSign mpcSign = mpcSigning.getMPCSign();
-                System.out.println(String.format("algorithm:[%s]   %s ", algorithm, EnumDefined.Algorithm.ed25519.toString()));
-                System.out.println(algorithm.equals(EnumDefined.Algorithm.ed25519.toString()));
                 if (algorithm.equals(EnumDefined.Algorithm.ed25519.toString())) {
                     System.out.println(String.format("Sig: %s", mpcSign.getSig()));
                 } else {
