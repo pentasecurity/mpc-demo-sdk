@@ -198,6 +198,63 @@ Native module should be used after checking each OS and the corresponding unpack
 
 [Click here](<https://pentasecurity.github.io/mpc-demo-sdk/>) to view the interface provided for Penta MPC SDK.
 
+## Demo Program Setting
+
+Please follow the following steps for Penta MPC SDK demo program testing.
+
+### Download
+
+Download the demo program as follows.
+<br>
+When the download is complete, check to make sure that the directory and configuration files exist.
+```
+/home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
+Cloning into 'mpc-demo-sdk'...
+remote: Enumerating objects: 83, done.
+remote: Counting objects: 100% (83/83), done.
+remote: Compressing objects: 100% (67/67), done.
+remote: Total 83 (delta 16), reused 49 (delta 1), pack-reused 0
+Unpacking objects: 100% (83/83), done.
+/home/mpc> ls
+mpc-demo-sdk
+/home/mpc> cd mpc-demo-sdk
+/home/mpc/mpc-demo-sdk> ls
+LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
+/home/mpc/mpc-demo-sdk> cd MPCDemo
+```
+
+### Build
+Build the program as follows.
+<br>
+When the build is complete, check to make sure that the directory and configuration files exist.
+```
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle build
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 up-to-date
+/home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
+/home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
+/home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
+MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
+```
+
+### Starting the Demo Program
+To run the demo program, you must first apply for the registration and have your email verified, so that a Customer ID is issued.
+[Please click here](<https://mpc.pentasecurity.com:18443/join>) for demo registration.
+<br><br>
+When running the demo program, you may enter Customer ID with -c option.
+<br>
+A valid Customer ID that has been issued from the registration process must be entered to operate the demo.
+<br>
+* e.g.) When customer ID is set as [Customer ID 00000000-0000-0000-0000-000000000000]
+```
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 
+```
+
 ## Testing the Program
 Demo program is configured to test the MPC function by using Penta MPC SDK.
 <br><br>
