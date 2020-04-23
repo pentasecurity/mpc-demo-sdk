@@ -547,7 +547,7 @@ MPC 그룹이 생성되었으면 이제 서명을 진행 할 수 있습니다.
 서명을 위한 참여는 최소한 MPC 그룹 생성 시 지정한 Threshold 만큼의 Member 참여가 필요 합니다. 
 <br>
 <br>
-따라서 위 예에서 member1, member2, member3로 Member 크기는 3이고, Threshold가 2이므로 서명시 Threshold는 2~3을 지정 할 수 있습니다.
+따라서 위 예제에서 member1, member2, member3로 Member 크기는 3이고, Threshold가 2이므로 서명시 Threshold는 2~3을 지정 할 수 있습니다.
 <br>
 Threshold에 2를 주면 member 하나가 거부를 하더라도 서명이 가능합니다.
 <br>
