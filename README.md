@@ -161,8 +161,10 @@ mpc@pentasecurity.com
 The SDK is composed into MPC SDK JAR (Java Archive) and Native Module.
 <br><br>
 JAR file must be added to the CLASSPATH environment variable or java -cp option.
-<br><br>
-Native Module must be added to the library PATH of each OS or java -Djava.library.path. Native module should be used after checking each OS and the corresponding unpacking tar.gz.
+<br>
+Native Module must be added to the library PATH of each OS or java -Djava.library.path.
+<br>
+Native module should be used after checking each OS and the corresponding unpacking tar.gz.
 <br>
 * e.g.)
 <pre> 
@@ -180,16 +182,21 @@ Native Module must be added to the library PATH of each OS or java -Djava.librar
 
 ## Structure of Directory
 ```
-┬ MPCDemo            : MPC Demo 
-│   ├ bin            : Start Script
-│   ├ src            : Demo source
-│   └ build.gradle   : gradle script
-└ MPCSdk             : PentaMPC SDK
-    ├ native         : PentaMPC native modules
-    ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar    : PentaMPC javadoc
-    ├ mpc-sdk-1.0-SNAPSHOT.jar            : PentaMPC Java Archive
-    └ pcw-common-1.6.2-SNAPSHOT.jar       : PentaMPC Common Java Archive
+┬ MPCDemo               : MPC Demo
+│   ├ bin/              : Start Script
+│   ├ src/              : Demo source
+│   └ build.gradle      : gradle script
+├ MPCSdk                : PentaMPC SDK
+│   ├ native/           : PentaMPC native modules
+│   ├ mpc-sdk-1.0-SNAPSHOT-javadoc.jar    : PentaMPC javadoc
+│   ├ mpc-sdk-1.0-SNAPSHOT.jar            : PentaMPC Java Archive
+│   └ pcw-common-1.6.2-SNAPSHOT.jar       : PentaMPC Common Java Archive
+└ docs/                 : MPCSdk Javadoc
 ```
+
+## Interface
+
+[Click here](<https://pentasecurity.github.io/mpc-demo-sdk/>) to view the interface provided for Penta MPC SDK.
 
 ## Testing the Program
 Demo program is configured to test the MPC function by using Penta MPC SDK.
@@ -233,11 +240,6 @@ Password :
   9. Exit
 Select Menu.  (1,2,3,4,5,9) : 
 ```
-## Provided Interface
-
-For interface, please refer to the following link.
-<br>
-Interface document : <https://pentasecurity.github.io/mpc-demo-sdk/>
    
 - - -
    
