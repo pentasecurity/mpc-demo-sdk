@@ -354,7 +354,7 @@ Let’s say one person proposes to create a group.
 Contrary to the general method of how a group created, for MPC Group formation a Member proposes the act and then chooses who the Members will be to make the new group.
 <br>
 The initiator proposes a new group, selects the participant Members and then receives a Session ID to confirm Members’ intentions.
-<br>
+<br><br>
 The Session ID created during the initiation process is manually delivered to other Member’s demo program.
 <br>But for the use of the commercial program (*not the demo version), a Push Alert will pop up on the Application immediately.
 <br>
