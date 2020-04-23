@@ -394,6 +394,9 @@ Non-initiating Members can deliver their intentions of participating in the grou
 If any of the selected Members do not consent to participate in the group as a Member, the proposal to create the group is cancelled.
 <br>
 <br>
+When a Session is created, the Session must be completed by the given time (time set with createGroup interface parameter). 
+<br>
+Otherwise, it will be on Timeout and the Session will automatically be canceled.
 <br>
 For the demo program the time is set for 5 minutes in default.
 <br>
@@ -423,11 +426,159 @@ Please enter Session ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
 
 ### Creation of MPC Group
 
+Once the creation of MPC Group is complete, MPC Group ID, Group Index for Members, MPC Group Public Key, Private Key Pair and Secret Value is provided.
+<br>
+Because of its innate characteristics, the secret key of the MPC Group is unknown, undisclosed and unsaved in the server.
+<br>
+When a signature is requested, it calls for the combination of each key that every Member holds.
+<br>
+<br>
+The creation of the MPC Group proceeds in 5 steps from initiation (Step -1) to completion (Step 3).
+```
+Do you join this Session? ([A]PPROVE, [R]EJECT) : a
+Step: -1
+Step: 0
+Step: 1
+Step: 2
+Step: 3
+MPC Group ID: 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+Member Index: 1
+Group PubKey: 0x02d58fb448606b5a53f6498999f9cbc3363c432551a68529a1168fe3b9a79e7728
+Member PriKey: 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
+Member PubKey: 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20ad2d408043f
+Member Secret: 0x4ef8b2664bf8406867c42a6ac19e422480e62579af1e74956da3cad5d5770bed
+   1. MPC Group Participation Request
+   2. Join in the creation of MPC Group
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 8
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 5
+================================================================================================
+MPC Group ID         : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+MPC Group Name       : MPC Group for testing
+Owner                : member1
+Threshold            : 2
+Group Size           : 0
+Algorithm            : ecdsa_256k1
+MPC Group PubKey     : 0x02d58fb448606b5a53f6498999f9cbc3363c432551a68529a1168fe3b9a79e7728
+My PubKey            : 0x0215e0c7ee5fae92c90850e64fee74ee3eca43160834c1a0c236d20ad2d408043f
+My PriKey            : 0x76c2424a0592ee7ec05d0c32d17977971635fe73e0bd134ff78a6a4e06404387
+My Secret            : 0x4ef8b2664bf8406867c42a6ac19e422480e62579af1e74956da3cad5d5770bed
+MemberID : member1    Index: 0
+MemberID : member2    Index: 1
+MemberID : member3    Index: 2
+================================================================================================
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) :
+```
+
 ### Initation of MPC Signature Approval
+
+Once the MPC Group is created, signatures can now be issued.
+<br>
+To generate a signature within the Group, it is mandatory to have the minimum number of participants (specified as the Threshold) approve.
+<br>
+<br>
+In other words, while the Group Members are set as member1, member2, member3 – total of 3 participants – the Threshold to approve the signature request would be 2.
+<br>
+So to generate a whole signature, 2-3 can be set as the Threshold.
+<br>
+If the Threshold is set for 2 approvals, then it would only require 2 Members’ participation to generate the signature.
+<br>
+If the Threshold is set for 3 approvals, then it would definitely require all 3 Members’ participation for the signature
+```
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 1
+Message : Message to sign.
+MPC Group ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+Threshold : [2]
+comment : comment..
+[Signing] Session ID: a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+Step: -1
+```
 
 ### Participation of MPC Signature Generation
 
+Members that are not the initiator uses the Session ID to participate in the Session.
+<br>
+All of the Members are eligible to participate, and identical to the process of creating the MPC Group, participants may agree or refuse to participate in the Session.
+<br>
+However, unlike the MPC Group creation process, generating the signature does not require a unanimous approval.
+<br>
+Even with a certain Member refusing to take part in the Session, as long as the number of participants meet the Threshold number, the signature, the issuing of the signature will take place.
+```
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 2
+Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+```
+
 ### Creation of MPC Signature
+
+With the generation of MPC Signature, R value and S value is formed.
+<br><br>
+The Signatue proceeds in 7 steps from initiation (Step -1) to completion (Step 5).
+```
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 2
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 2
+Please enter Session ID : a0dd096f-eb1b-460d-ba2a-cfae2015faeb
+Do you join this Session? ([A]PPROVE, [R]EJECT) : a
+Step: -1
+Step: 0
+Step: 1
+Step: 2
+Step: 3
+Step: 4
+Step: 5
+Sigr: 0x18d6f655b73e9d5daeec915ff0e377321b280de4d2b13b9ab0e2ce6ca041ec78
+Sigs: 0x349962293acc3ec8f266044c22779e865f3ee8b8f57f9545ad6f19ef76e7ab3d
+Sigrecovery: 0
+   1. Signing Participation Request
+   2. Join in the Signing
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) :
+```
 
 - - -
    
