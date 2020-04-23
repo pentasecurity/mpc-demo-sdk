@@ -347,7 +347,79 @@ Select Menu.  (1,2,3,4,5,9) :
 
 ### Initiation of MPC Group Formation
 
+MPC Groups can be created with the participation of minimum 2 and maximum 10 members: 2 ≤ M ≤10.
+<br><br>
+Let’s say one person proposes to create a group.
+<br>
+Contrary to the general method of how a group created, for MPC Group formation a Member proposes the act and then chooses who the Members will be to make the new group.
+<br>
+The initiator proposes a new group, selects the participant Members and then receives a Session ID to confirm Members’ intentions.
+<br>
+The Session ID created during the initiation process is manually delivered to other Member’s demo program.
+<br>But for the use of the commercial program (*not the demo version), a Push Alert will pop up on the Application immediately.
+<br>
+* e.g.) In the example below a Threshold MPC group that requires 2 signatures out of a 3 Member Group is proposed.
+```
+// Initiator is set as member1.
+// Participants (members) are set as member2, member3. 
+
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 1
+   1. MPC Group Participation Request
+   2. Join in the creation of MPC Group
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 1
+list of MemberIDs. (separator is comma(,)) : member2,member3
+number of members required for signing : 2
+name : MPC Group for testing
+comment : testing...
+  1. ecdsa_256k1
+  2. ecdsa_p256
+  3. ed25519
+Select an algorithm.  (1,2,3) : 1
+[createGroup] Session ID: 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+Step: -1
+```
+
 ### Participation of MPC Group
+
+Non-initiating Members can deliver their intentions of participating in the group.
+<br>
+If any of the selected Members do not consent to participate in the group as a Member, the proposal to create the group is cancelled.
+<br>
+<br>
+<br>
+For the demo program the time is set for 5 minutes in default.
+<br>
+* e.g.) In the example below member2 is participating as one of the members in the MPC Group.
+```
+Please enter your password again:
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 1
+Member ID : member2
+Password:
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) : 1
+   1. MPC Group Participation Request
+   2. Join in the creation of MPC Group
+   8. Previous Menu
+   9. Exit
+Select Menu.  (1,2,8,9) : 2
+Please enter Session ID : 27f59c84-f1f1-4fb9-a0c2-16ab6e89db89
+```
 
 ### Creation of MPC Group
 
