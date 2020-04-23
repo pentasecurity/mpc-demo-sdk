@@ -240,6 +240,7 @@ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
 
 ### Starting the Demo Program
 To run the demo program, you must first apply for the registration and have your email verified, so that a Customer ID is issued.
+<br>
 [Please click here](<https://mpc.pentasecurity.com:18443/join>) for demo registration.
 <br><br>
 When running the demo program, you may enter Customer ID with -c option.
@@ -255,49 +256,107 @@ A valid Customer ID that has been issued from the registration process must be e
 Select Menu.  (1,2,9) : 
 ```
 
-## Testing the Program
-Demo program is configured to test the MPC function by using Penta MPC SDK.
+## Testing Demo Program
+
+Users are able to run and test out MPC functions with Penta MPC SDK.
 <br><br>
-The key is not preserved when the program is rebooted. This is because the in the demo program key pairs that are generated for all members are managed only through HashMap. In order to apply it on another application, operation, etc., the key pairs that are generated on the demo program must be kept in a separate storage, like a database.
-<br>  
-* Download
+Demo program does not retain or save the generated keys when it is rebooted.
+<br>
+The Key Pairs created for every Member when MPC Group is being formed, are managed in form of HashMap only.
+
+### Create Members
+
+“Members” are the those that play the primary role in utilizing the MPC functionalities.
+<br>
+Members gather to form a “Group”, and within that Group, signing of MPC takes place.
+<br>
+* e.g.) In the example below, Customer ID is set as [Customer ID 00000000-0000-0000-0000-000000000000] and three Member IDs are set as “member1”, “member2”, “member 3”.
 ```
-/home/mpc> git clone https://github.com/pentasecurity/mpc-demo-sdk.git
-Cloning into 'mpc-demo-sdk'...
-remote: Enumerating objects: 83, done.
-remote: Counting objects: 100% (83/83), done.
-remote: Compressing objects: 100% (67/67), done.
-remote: Total 83 (delta 16), reused 49 (delta 1), pack-reused 0
-Unpacking objects: 100% (83/83), done.
-/home/mpc> ls
-mpc-demo-sdk
-/home/mpc> cd mpc-demo-sdk
-/home/mpc/mpc-demo-sdk> ls
-LICENSE  MPCDemo  MPCSdk  README.md  build.gradle  gradle  gradlew  gradlew.bat  settings.gradle
-/home/mpc/mpc-demo-sdk> cd MPCDemo
+// Run the Demo Program by entering Customer ID as an option
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -c 00000000-0000-0000-0000-000000000000
+
+// Set Member (member1)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member1
+Please enter Name : MEMBER1
+Please enter Password:
+Please enter your password again:
+
+// Set Member (member2)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member2
+Please enter Name : MEMBER2
+Please enter Password:
+Please enter your password again:
+
+// Set Member (member3)
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 2
+Please enter ID : member3
+Please enter Name : MEMBER3
+Please enter Password:
+Please enter your password again:
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) :
 ```
-* Build and Test
+
+### Log in for Members
+
+Members log in on the MPC Server.
+<br>
+Logged in Members can form a Group and then later process MPC signature.
+<br>
+* e.g.) In the example below “member1” logs on as a Member
 ```
-/home/mpc/mpc-demo-sdk/MPCDemo> gradle build
-BUILD SUCCESSFUL in 1s
-2 actionable tasks: 2 up-to-date
-/home/mpc/mpc-demo-sdk/MPCDemo> chmod +x bin/MPCDemo.sh
-/home/mpc/mpc-demo-sdk/MPCDemo> gradle copyRelease
-/home/mpc/mpc-demo-sdk/MPCDemo> cd build/release
-/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ls
-MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
-/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh
+Please enter your password again:
+   1. Login
+   2. Create member
+   9. Exit
+Select Menu.  (1,2,9) : 1
 Member ID : member1
-Password : 
-  1. Creation of MPC Group
-  2. Signing
-  3. Member List
-  4. Update AccessToken
-  5. My MPC Group
-  9. Exit
-Select Menu.  (1,2,3,4,5,9) : 
+Password:
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) :
 ```
-   
+* e.g.) In the example below “member 1” logs in with -m -p option
+```
+/home/mpc/mpc-demo-sdk/MPCDemo/build/release> ./MPCDemo.sh -m member1 -p password -c 00000000-0000-0000-0000-000000000000
+   1. Creation of MPC Group
+   2. Signing
+   3. Member List
+   4. Update AccessToken   
+   5. My MPC Group
+   9. Exit
+Select Menu.  (1,2,3,4,5,9) :    
+```
+
+### Initiation of MPC Group Formation
+
+### Participation of MPC Group
+
+### Creation of MPC Group
+
+### Initation of MPC Signature Approval
+
+### Participation of MPC Signature Generation
+
+### Creation of MPC Signature
+
 - - -
    
 # Contact Information
