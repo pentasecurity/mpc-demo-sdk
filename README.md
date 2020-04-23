@@ -7,7 +7,7 @@
 Penta Security provides SDK for Penta MPC Demo Program.
 <br>
 <br>
-[Please click here](<https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>) to find the English version of the document.
+[Please click here](<https://github.com/pentasecurity/mpc-demo-sdk/blob/master/README-ko.md>) to find the Korean version of the document.
    
 - - -
    
