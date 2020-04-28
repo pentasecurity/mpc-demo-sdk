@@ -15,12 +15,13 @@ import com.pentasecurity.mpc.response.MembersResponse;
 import com.pentasecurity.mpc.response.NormalResponse;
 
 import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MPCDemo {
-    protected static String serverUrl = "https://mpc.pentasecurity.com:8443";
+    protected static String serverUrl = "https://mpc.pentasecurity.com";
     private static String memberid = null;
     private static String password = null;
     protected static Command command = null;
@@ -70,7 +71,7 @@ public class MPCDemo {
         networkService.baseUrl(serverUrl);
 
         /* When using a proxy. */
-        //java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
+        //java.net.Proxy proxy = new java.net.Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost", 8888));
         //networkService.proxy(proxy);
 
         return networkService.getApiClient();
