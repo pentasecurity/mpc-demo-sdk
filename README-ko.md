@@ -168,15 +168,13 @@ mpc@pentasecurity.com
 
 Penta MPC SDK는 SDK Jar(Java Archive)와 Native module로 구성 되어 있습니다.
 <br><br>
-Jar 파일은 CLASSPATH 환경변수에 추가 하거나 java의 -cp 옵션에 추가 하여야 합니다.
+Penta MPC SDK는 기본적으로 다운로드 받고, 압축을 해제하고, 빌드하여, 실행하는 단계를 거쳐 사용할 수 있습니다.
 <br>
-Native Module은 각 OS의 라이브러리 PATH에 추가하거나 java의 -Djava.library.path 로 지정해야 합니다.
-<br>
-Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야 합니다.
+다음 예제를 통해 다운로드부터 실행까지의 단계를 간략하게 확인할 수 있습니다.
 <br>
 * 예제)
 <pre> 
- // MPC Demo를 받습니다.
+ // MPC Demo를 다운로드 받습니다.
  $ cd /opt
  $ git clone https://github.com/pentasecurity/mpc-demo-sdk.git
  $ cd mpc-demo-sdk
@@ -184,7 +182,7 @@ Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야
  LICENSE  MPCDemo  MPCSdk   README-ko.md  README.md         build.gradle  
  docs     gradle   gradlew  gradlew.bat   settings.gradle
  
- // 사용하는 native 라이브러리를 풀어서 사용용합니다.
+ // 사용하는 환경에 맞는 native 라이브러리 압축을 해제합니다.
  $ cd MPCSdk/native/
  $ ls
  libPenta_MPC-0.2.1.0403.35ce.Windows.x64.zip    libPenta_MPC-0.2.1.0403.35ce.darwin.tar.gz
@@ -205,13 +203,13 @@ Native module은 각 OS를 확인 하여 해당 tar.gz을 풀어서 사용해야
  BUILD SUCCESSFUL in 8s
  3 actionable tasks: 2 executed, 1 up-to-date
  
- // 사용하는 모듈을 build/release로 복사하여 바로 실행 가능한 형태로 만듭니다. 
+ // 모듈의 사용을 위해 build/release 경로로 복사합니다. 
  $ gradle copyRelease
  
  BUILD SUCCESSFUL in 1s
  3 actionable tasks: 1 executed, 2 up-to-date
  
- // build 된 모듈을 바로 가능한 형태로 복사한 디렉토리로 이동하여 실행 합니다.
+ // build/release 경로로 이동하여 모듈을 실행합니다.
  $ cd MPCDemo/build/release/
  $ ls
  MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
