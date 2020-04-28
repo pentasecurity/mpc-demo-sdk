@@ -143,7 +143,7 @@ M = "MPC 그룹"의 "멤버" 전체 수
 
 ## 데모 사용 신청
 
-데모 사용에 대한 신청은 [여기를 클릭하여 진행할 수 있습니다.](<https://mpc.pentasecurity.com:18443/join>)
+데모 사용에 대한 신청은 [여기를 클릭하여 진행할 수 있습니다.](<https://mpc.pentasecurity.com/join>)
 <br>
 신청양식에 맞게 내용을 입력하고 신청 버튼을 클릭하면 입력한 메일 주소로 메일이 발송됩니다.
 <br>
@@ -289,7 +289,7 @@ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
 
 데모 프로그램을 실행하려는 경우, 데모 사용 신청을 접수하여 메일 인증을 받고 Customer ID를 발급받아야 합니다.
 <br>
-데모 사용 신청은 [여기를 클릭하여 진행할 수 있습니다.](<https://mpc.pentasecurity.com:18443/join>)
+데모 사용 신청은 [여기를 클릭하여 진행할 수 있습니다.](<https://mpc.pentasecurity.com/join>)
 <br>
 <br>
 데모 프로그램 실행 시 -c 옵션으로 Customer ID를 입력할 수 있습니다.
