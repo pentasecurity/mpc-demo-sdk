@@ -139,7 +139,7 @@ Therefore, the input of N-out-of-M quorum is mandatory to authorize MPC operatio
 
 ## Registering for Demo Testing
 
-[Please follow this link](<http://10.0.121.41:18080/join>) to request testing for MPC demo. 
+[Please follow this link](<https://mpc.pentasecurity.com/join>) to request testing for MPC demo. 
 <br>
 Once the form is complete and registered, you will receive an email from us in your inbox. 
 <br>
@@ -241,7 +241,7 @@ MPCDemo-1.0.jar  MPCDemo.bat  MPCDemo.sh  lib
 ### Starting the Demo Program
 To run the demo program, you must first apply for the registration and have your email verified, so that a Customer ID is issued.
 <br>
-[Please click here](<https://mpc.pentasecurity.com:18443/join>) for demo registration.
+[Please click here](<https://mpc.pentasecurity.com/join>) for demo registration.
 <br><br>
 When running the demo program, you may enter Customer ID with -c option.
 <br>
